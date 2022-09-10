@@ -2,7 +2,7 @@ local g = vim.g
 local opt = vim.opt
 local keymap = vim.keymap.set
 
--- ======== Global MapLeader ======== 
+-- ======== Global MapLeader ========
 -- Primary leader `<Space>` used in global mappings, e.g.:
 --   - save, close, buffer-navigating, etc.
 -- Secondary leader `;` used in plugin mappings
@@ -19,7 +19,7 @@ opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
 
--- ======== Appearance ======== 
+-- ======== Appearance ========
 -- Disable guicursor
 opt.guicursor = nil
 -- Use ruler

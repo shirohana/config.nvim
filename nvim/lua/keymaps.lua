@@ -46,7 +46,7 @@ keymap('i', '<C-E>', '<C-O>A')
 -- Clone paragraph
 keymap('n', 'yp', 'yap<S-}>p')
 -- Join line without space
--- keymap('n', '<C-J>', '<Cmd>call helper#edit#join_spaceless()<CR>')
+keymap('n', '<C-J>', '<Cmd>call helper#edit#join_spaceless()<CR>')
 -- Sort lines
 keymap('v', 'so<Space>', ":<C-U>'<,'>sort<CR>")
 -- Alias Q -> "
