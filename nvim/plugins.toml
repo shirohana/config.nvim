@@ -1,0 +1,46 @@
+# ================================
+# Plugin Manager
+# ================================
+# Dein https://github.com/Shougo/dein.vim
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# ================================
+# Appearance
+# ================================
+
+# Theme https://github.com/overcache/NeoSolarized
+# Due to we need some customization, we cloned the scheme into
+# `colors/NeoSolarized.vim`.
+
+# Nvim-web-devicons https://github.com/kyazdani42/nvim-web-devicons
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+# ================================
+# File Navigation
+# ================================
+
+# NeoTree https://github.com/nvim-neo-tree/neo-tree.nvim
+[[plugins]]
+repo = 'nvim-neo-tree/neo-tree.nvim'
+depends = ['plenary.nvim', 'nvim-web-devicons', 'nui.nvim']
+hook_add = "lua require 'plugins.neo-tree'"
+
+# ================================
+# Utility
+# ================================
+
+# Nui https://github.com/MunifTanjim/nui.nvim
+[[plugins]]
+repo = 'MunifTanjim/nui.nvim'
+
+# Plenary https://github.com/nvim-lua/plenary.nvim
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+# TreeSitter https://github.com/nvim-treesitter/nvim-treesitter
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_add = "lua require 'plugins.treesitter'"
+hook_source = 'TSUpdate'
