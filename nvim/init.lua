@@ -1,7 +1,7 @@
 require 'env'
 require 'plugins'
-require 'keymaps'
-require 'plugin-keymaps'
+require 'mappings'
+require 'plugin-mappings'
 require 'abbrs'
 require 'theme'
 
