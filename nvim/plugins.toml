@@ -13,10 +13,19 @@ repo = 'Shougo/dein.vim'
 # Due to we need some customization, we cloned the scheme into
 # `colors/NeoSolarized.vim`.
 
-# Lualine https://github.com/nvim-lualine/lualine.nvim
+# Airline https://github.com/vim-airline/vim-airline
 [[plugins]]
-repo = 'nvim-lualine/lualine.nvim'
-hook_add = "lua require 'plugins.lualine'"
+repo = 'vim-airline/vim-airline-themes'
+on_source = 'vim-airline'
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes']
+hook_add = "lua require 'plugins.airline'"
+
+# Lualine https://github.com/nvim-lualine/lualine.nvim
+# [[plugins]]
+# repo = 'nvim-lualine/lualine.nvim'
+# hook_add = "lua require 'plugins.lualine'"
 
 # Nvim-web-devicons https://github.com/kyazdani42/nvim-web-devicons
 [[plugins]]
@@ -29,7 +38,7 @@ repo = 'kyazdani42/nvim-web-devicons'
 # CtrlSpace https://github.com/vim-ctrlspace/vim-ctrlspace
 [[plugins]]
 repo = 'vim-ctrlspace/vim-ctrlspace'
-# depends = 'fzf.vim'
+# depends = ['fzf.vim']
 hook_add = "lua require 'plugins.ctrlspace'"
 
 # NeoTree https://github.com/nvim-neo-tree/neo-tree.nvim
@@ -80,6 +89,11 @@ on_map = '<Plug>Commentary'
 repo = 'mbbill/undotree'
 on_cmd = 'UndotreeToggle'
 hook_add = "lua require 'plugins.undotree'"
+
+# Surround https://github.com/kylechui/nvim-surround
+[[plugins]]
+repo = 'kylechui/nvim-surround'
+hook_add = "lua require 'plugins.surround'"
 
 # VisualMulti https://github.com/mg979/vim-visual-multi
 [[plugins]]

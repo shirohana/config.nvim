@@ -1,6 +1,5 @@
 local g = vim.g
 local opt = vim.opt
-local keymap = vim.keymap.set
 
 -- ======== Global MapLeader ========
 -- Primary leader `<Space>` used in global mappings, e.g.:

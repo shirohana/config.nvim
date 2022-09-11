@@ -14,7 +14,7 @@ require 'lualine'.setup {
     icons_enabled = true,
     -- globalstatus = true,
     component_separators = '',
-    section_separators = { left = ' ', right = ' ' },
+    section_separators = { left = '', right = '' },
   },
 
   sections = {
@@ -28,7 +28,7 @@ require 'lualine'.setup {
     lualine_x = {},
     lualine_y = { 'progress' },
     lualine_z = {
-      { 'location', separator = { right = ' ' } },
+      { 'location', padding = 0, separator = { right = ' ' } },
     },
   },
 
