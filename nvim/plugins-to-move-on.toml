@@ -22,14 +22,6 @@ hook_add = '''
 # File Navigation
 # ================================
 
-# CtrlSpace
-# https://github.com/vim-ctrlspace/vim-ctrlspace
-[[plugins]]
-repo = 'vim-ctrlspace/vim-ctrlspace'
-depends = 'fzf.vim'
-lazy = 0
-hook_add = 'source $NVIM_PLUGINS/ctrlspace.vim'
-
 # ZFZ
 # https://github.com/junegunn/fzf.vim
 [[plugins]]
@@ -76,13 +68,6 @@ on_map = '<Plug>(incsearch-fuzzy-'
 # ================================
 # Editing
 # ================================
-
-# Commentary
-# https://github.com/tpope/vim-commentary
-[[plugins]]
-repo = 'tpope/vim-commentary'
-# on_map = ['<Plug>Commentary', '<Plug>ChangeCommentary']
-on_map = '<Plug>Commentary'
 
 # EasyAlign
 # https://github.com/junegunn/vim-easy-align
@@ -145,26 +130,6 @@ on_map = '<Plug>Splitjoin'
 hook_add = '''
   let g:splitjoin_join_mapping = 0
   let g:splitjoin_split_mapping = 0
-'''
-
-# Surround
-# https://github.com/tpope/vim-surround
-[[plugins]]
-repo = 'tpope/vim-surround'
-depends = 'vim-repeat'
-on_map = [
-  '<Plug>Csurround',
-  '<Plug>CSurround',
-  '<Plug>Dsurround',
-  '<Plug>Ysurround',
-  '<Plug>YSurround',
-  '<Plug>Yssurround',
-  '<Plug>YSsurround',
-  '<Plug>VSurround',
-  '<Plug>VgSurround'
-]
-hook_add = '''
-  let g:surround_no_mappings = 1
 '''
 
 # UltiSnips
@@ -243,68 +208,6 @@ depends = ['nvim-lspconfig']
 [[plugins]]
 repo = 'simrat39/symbols-outline.nvim'
 hook_add = 'source $NVIM_PLUGINS/symbols-outline.rc.lua'
-
-# TreeSitter
-# https://github.com/nvim-treesitter/nvim-treesitter
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-hook_add = 'source $NVIM_PLUGINS/treesitter.rc.lua'
-hook_source = 'TSUpdate'
-
-# Syntax checking
-# https://github.com/vim-syntastic/syntastic
-# https://github.com/dense-analysis/ale
-# [[plugins]]
-# repo = 'vim-syntastic/syntastic'
-# on_ft = ['javascript', 'typescript', 'python']
-# hook_add = '''
-#   let g:syntastic_always_populate_loc_list = 1
-#   let g:syntastic_loc_list_height = 4
-#   let g:syntastic_auto_loc_list = 1
-#   let g:syntastic_check_on_open = 0
-#   let g:syntastic_cursor_column = 0
-#   let g:syntastic_check_on_wq = 0
-#   let g:syntastic_python_checkers = ['pylint']
-#   let g:syntastic_javascript_checkers = []
-#   let g:syntastic_javascript_eslint_exe = '$(yarn global bin)/eslint'
-#   let g:syntastic_javascript_eslint_args = '--cache'
-#   let g:syntastic_javascript_flow_exe = '$(yarn global bin)/flow'
-# '''
-# [[plugins]]
-# repo = 'dense-analysis/ale'
-# on_ft = ['javascript', 'typescript', 'stylus']
-# on_cmd = 'ALE'
-# on_map = '<Plug>(ale_'
-# hook_add = '''
-#   let g:ale_hover_cursor = 0
-#   let g:ale_cursor_detail = 0
-#   let g:ale_floating_preview = 1
-#   let g:ale_hover_to_floating_preview = 0
-#   let g:ale_detail_to_floating_preview = 0
-#   let g:ale_close_preview_on_insert = 1
-#   let g:ale_lint_on_insert_leave = 1
-#   let g:ale_lint_on_text_changed = 'never'
-
-#   let g:ale_json_jsonlint_use_global = 1
-#   let g:ale_json_spectral_use_global = 1
-
-#   let g:ale_completion_autoimport = 1
-#   let g:ale_completion_enabled = 1
-
-#   " 'json': ['jsonlint', 'spectral'],
-#   let g:ale_linters = {
-#     \ 'javascript': ['flow', 'eslint'],
-#     \ 'json': ['jsonlint'],
-#     \ 'stylus': ['stylelint'],
-#     \ 'typescript': ['eslint', 'tslint', 'tsserver'],
-#     \ }
-#   " WIP
-#   let g:ale_linter_aliases = {
-#     \ 'mdx': 'typescript',
-#     \ }
-
-#   let g:ale_stylus_stylelint_options = '--custom-syntax stylelint-plugin-stylus/custom-syntax'
-# '''
 
 # ================================
 # Language

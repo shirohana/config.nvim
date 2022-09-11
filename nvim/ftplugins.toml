@@ -1,0 +1,8 @@
+# ================================
+# Lua
+# ================================
+# LuaDev https://github.com/folke/lua-dev.nvim
+[[plugins]]
+repo = 'folke/lua-dev.nvim'
+lazy = 0
+hook_add = "lua require 'plugins.lua-dev'"

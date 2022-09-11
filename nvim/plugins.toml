@@ -27,10 +27,6 @@ hook_add = "lua require 'plugins.airline'"
 # repo = 'nvim-lualine/lualine.nvim'
 # hook_add = "lua require 'plugins.lualine'"
 
-# Nvim-web-devicons https://github.com/kyazdani42/nvim-web-devicons
-[[plugins]]
-repo = 'kyazdani42/nvim-web-devicons'
-
 # ================================
 # File Navigation
 # ================================
@@ -44,7 +40,7 @@ hook_add = "lua require 'plugins.ctrlspace'"
 # NeoTree https://github.com/nvim-neo-tree/neo-tree.nvim
 [[plugins]]
 repo = 'nvim-neo-tree/neo-tree.nvim'
-depends = ['plenary.nvim', 'nvim-web-devicons', 'nui.nvim']
+depends = ['nui.nvim', 'nvim-web-devicons', 'plenary.nvim']
 hook_add = "lua require 'plugins.neo-tree'"
 
 # Telescope https://github.com/nvim-telescope/telescope.nvim
@@ -84,22 +80,73 @@ augroup END
 repo = 'tpope/vim-commentary'
 on_map = '<Plug>Commentary'
 
+# Surround https://github.com/kylechui/nvim-surround
+[[plugins]]
+repo = 'kylechui/nvim-surround'
+hook_add = "lua require 'plugins.surround'"
+
 # Undotree https://github.com/mbbill/undotree
 [[plugins]]
 repo = 'mbbill/undotree'
 on_cmd = 'UndotreeToggle'
 hook_add = "lua require 'plugins.undotree'"
 
-# Surround https://github.com/kylechui/nvim-surround
-[[plugins]]
-repo = 'kylechui/nvim-surround'
-hook_add = "lua require 'plugins.surround'"
-
 # VisualMulti https://github.com/mg979/vim-visual-multi
 [[plugins]]
 repo = 'mg979/vim-visual-multi'
-on_event = 'BufEnter'
-hook_add = "lua require 'plugins.visual-multi'"
+on_event = 'InsertEnter'
+hook_source = "lua require 'plugins.visual-multi'"
+
+# ================================
+# Language Server
+# ================================
+
+# LspConfig https://github.com/neovim/nvim-lspconfig
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+depends = ['lspkind-nvim', 'lspsaga.nvim']
+hook_add = "lua require 'plugins.lspconfig'"
+
+# LspKind https://github.com/onsails/lspkind-nvim
+[[plugins]]
+repo = 'onsails/lspkind-nvim'
+
+# LspSaga https://github.com/tami5/lspsaga.nvim
+[[plugins]]
+repo = 'tami5/lspsaga.nvim'
+hook_add = "lua require 'plugins.lspsaga'"
+
+# Mason https://github.com/williamboman/mason.nvim
+[[plugins]]
+repo = 'williamboman/mason.nvim'
+hook_add = "lua require 'plugins.mason'"
+
+# ================================
+# Completion
+# ================================
+
+# Cmp https://github.com/hrsh7th/nvim-cmp
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'
+depends = ['cmp-buffer', 'cmp-treesitter', 'lspkind-nvim', 'nvim-lspconfig', 'L3MON4D3/LuaSnip']
+hook_add = "lua require 'plugins.cmp'"
+
+# CmpBuffer https://github.com/hrsh7th/cmp-buffer
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+
+# CmpNvimLsp https://github.com/hrsh7th/cmp-nvim-lsp
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp'
+depends = ['nvim-lspconfig']
+
+# CmpTreeSitter https://github.com/ray-x/cmp-treesitter
+[[plugins]]
+repo = 'ray-x/cmp-treesitter'
+
+# LuaSnip https://github.com/L3MON4D3/LuaSnip
+[[plugins]]
+repo = 'L3MON4D3/LuaSnip'
 
 # ================================
 # Utility
@@ -118,3 +165,7 @@ repo = 'nvim-lua/plenary.nvim'
 repo = 'nvim-treesitter/nvim-treesitter'
 hook_add = "lua require 'plugins.treesitter'"
 hook_source = 'TSUpdate'
+
+# WebDevicons https://github.com/kyazdani42/nvim-web-devicons
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'

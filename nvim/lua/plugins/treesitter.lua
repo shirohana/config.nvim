@@ -10,15 +10,15 @@ parser_config.tsx.filetype_to_parsername = {
 
 configs.setup {
   ensure_installed = {
-    'html',
-    'javascript',
-    'json',
-    'markdown',
-    'python',
-    'toml',
-    'tsx',
-    'typescript',
-    'yaml',
+    -- 'html',
+    -- 'javascript',
+    -- 'json',
+    -- 'markdown',
+    -- 'python',
+    -- 'toml',
+    -- 'tsx',
+    -- 'typescript',
+    -- 'yaml',
   },
   highlight = {
     enable = true,
