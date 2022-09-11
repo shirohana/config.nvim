@@ -179,20 +179,6 @@ hook_add = '''
   autocmd MyAutoCmd BufWritePost *.snippets call UltiSnips#RefreshSnippets()
 '''
 
-# Undotree
-# https://github.com/mbbill/undotree
-[[plugins]]
-repo = 'mbbill/undotree'
-on_cmd = 'UndotreeToggle'
-hook_add = 'source $NVIM_PLUGINS/undotree.vim'
-
-# VisualMulti
-# https://github.com/mg979/vim-visual-multi
-[[plugins]]
-repo = 'mg979/vim-visual-multi'
-on_event = 'BufEnter'
-hook_add = 'source $NVIM_PLUGINS/visual-multi.vim'
-
 # ================================
 # Utility
 # ================================

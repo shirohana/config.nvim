@@ -66,12 +66,12 @@ keymap('n', '<Leader>w', '<Cmd>write<CR>')
 -- Reload Buffer
 keymap('n', '<Leader>e', '<Cmd>edit<CR>')
 -- " Wipe Buffer
--- nmap <Leader>q <Plug>(close-buffer-keep-layout)
+keymap('n', '<Leader>q', '<Plug>(close-buffer-keep-layout)')
 -- " Save & Wipe Buffer
 -- nnoremap <silent> <Leader>W :<C-u>write <bar> exec "normal \<Plug>(close-buffer-keep-layout)"<CR>
--- " Buffer Navigating, using `Opt+[` & `Opt+]`
--- nnoremap <silent> “ :<C-u>PrevBuffer<CR>
--- nnoremap <silent> ‘ :<C-u>NextBuffer<CR>
+-- " Buffer Navigating, using <Opt-[> & <Opt-]>
+keymap('n', '“', '<Cmd>PrevBuffer<CR>')
+keymap('n', '‘', '<Cmd>NextBuffer<CR>')
 -- " Buffer Navigating with Index
 -- nnoremap <silent> <Leader>1 :<C-u>call helper#buffer#GoNthBuffer(0)<CR>
 -- nnoremap <silent> <Leader>2 :<C-u>call helper#buffer#GoNthBuffer(1)<CR>

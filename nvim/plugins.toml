@@ -26,11 +26,23 @@ repo = 'kyazdani42/nvim-web-devicons'
 # File Navigation
 # ================================
 
+# CtrlSpace https://github.com/vim-ctrlspace/vim-ctrlspace
+[[plugins]]
+repo = 'vim-ctrlspace/vim-ctrlspace'
+# depends = 'fzf.vim'
+hook_add = "lua require 'plugins.ctrlspace'"
+
 # NeoTree https://github.com/nvim-neo-tree/neo-tree.nvim
 [[plugins]]
 repo = 'nvim-neo-tree/neo-tree.nvim'
 depends = ['plenary.nvim', 'nvim-web-devicons', 'nui.nvim']
 hook_add = "lua require 'plugins.neo-tree'"
+
+# Telescope https://github.com/nvim-telescope/telescope.nvim
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+depends = ['plenary.nvim']
+hook_add = "lua require 'plugins.telescope'"
 
 # ================================
 # Editing
@@ -57,6 +69,23 @@ augroup HanaBetterWhitespace
   autocmd BufEnter * EnableStripWhitespaceOnSave
 augroup END
 '''
+
+# Commentary https://github.com/tpope/vim-commentary
+[[plugins]]
+repo = 'tpope/vim-commentary'
+on_map = '<Plug>Commentary'
+
+# Undotree https://github.com/mbbill/undotree
+[[plugins]]
+repo = 'mbbill/undotree'
+on_cmd = 'UndotreeToggle'
+hook_add = "lua require 'plugins.undotree'"
+
+# VisualMulti https://github.com/mg979/vim-visual-multi
+[[plugins]]
+repo = 'mg979/vim-visual-multi'
+on_event = 'BufEnter'
+hook_add = "lua require 'plugins.visual-multi'"
 
 # ================================
 # Utility
