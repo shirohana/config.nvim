@@ -1,6 +1,6 @@
 -- opt.t_Co = 256
 
-if vim.fn.has('termguicolors') then
+if vim.fn.has 'termguicolors' then
   vim.opt.termguicolors = true
 end
 

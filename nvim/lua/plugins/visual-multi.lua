@@ -65,5 +65,4 @@ g.VM_maps = {
   -- ['Toggle Block'] = ';;<BS>',
   -- ['Toggle Single Region'] = ';;<CR>',
   -- ['Toggle Multiline'] = ';;M',
-
 }

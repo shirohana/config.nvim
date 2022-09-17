@@ -7,16 +7,17 @@ keymap('n', 'K', '<Nop>')
 keymap('n', 'Q', '<Nop>')
 keymap('n', 'ZQ', '<Nop>')
 keymap('n', 'ZZ', '<Nop>')
-keymap({'n', 'v'}, 's', '<Nop>')
+keymap({ 'n', 'v' }, 's', '<Nop>')
 keymap('v', 's', '<Nop>')
 keymap('n', '<F1>', '<Nop>')
 
 -- ======== Generic ========
 -- Better <Esc> (map 'n' for errorbells)
-keymap({'i', 'n', 'v'}, '<C-L>', '<Esc>')
+keymap({ 'i', 'n', 'v' }, '<C-L>', '<Esc>')
 -- Cancel highlight search
 keymap('n', '<Esc><Esc>', '<Cmd>nohlsearch<CR>')
 -- Highlight search on current word
+-- stylua: ignore
 keymap('n', 'zx', "<Cmd>let @/='\\<'.expand('<cword>').'\\>'<Bar>call histadd('search', @/)<Bar>set hlsearch<CR>")
 
 -- ======== Moving ========
@@ -55,16 +56,18 @@ keymap('c', '<C-E>', '<End>')
 -- Create new buffer, using <Opt-t>
 keymap('n', '†', '<Cmd>enew<CR>')
 -- Save buffer
-keymap('n', '<Leader>w', '<Cmd>write<CR>')
+keymap('n', '<Leader>w', '<Cmd>lua vim.lsp.buf.format();vim.cmd.write()<CR>')
+-- Save buffer without formatting
+keymap('n', '<Leader>W', '<Cmd>write<CR>')
 -- Reload buffer
 keymap('n', '<Leader>e', '<Cmd>edit<CR>')
 -- Wipe buffer
 keymap('n', '<Leader>q', '<Plug>(close-buffer-keep-layout)')
 -- Save & wipe buffer
-keymap('n', '<Leader>W', ':<C-u>write<Bar>exec "normal \\<Plug>(close-buffer-keep-layout)"<CR>')
+-- keymap('n', '<Leader>W', ':<C-u>write<Bar>exec "normal \\<Plug>(close-buffer-keep-layout)"<CR>')
 -- Buffer navigating, using <Opt-[> & <Opt-]>
-keymap('n', '“', '<Cmd>PrevBuffer<CR>')
-keymap('n', '‘', '<Cmd>NextBuffer<CR>')
+keymap('n', '‘', '<Cmd>PrevBuffer<CR>')
+keymap('n', '“', '<Cmd>NextBuffer<CR>')
 -- Buffer navigating with index
 keymap('n', '<Leader>1', '<Cmd>call helper#buffer#GoNthBuffer(0)<CR>')
 keymap('n', '<Leader>2', '<Cmd>call helper#buffer#GoNthBuffer(1)<CR>')

@@ -14,10 +14,10 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
+    ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
-    }),
+    },
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -28,7 +28,7 @@ cmp.setup {
     { name = 'buffer' },
   }),
   formatting = {
-    format = lspkind.cmp_format({
+    format = lspkind.cmp_format {
       mode = 'symbol_text',
       maxwidth = 50,
       symbol_map = {
@@ -58,6 +58,6 @@ cmp.setup {
         Operator = '',
         TypeParameter = '',
       },
-    }),
+    },
   },
 }

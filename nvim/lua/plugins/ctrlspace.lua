@@ -1,4 +1,4 @@
-local CACHE_DIR = require 'vars'.CACHE_DIR
+local CACHE_DIR = require('vars').CACHE_DIR
 
 local g = vim.g
 

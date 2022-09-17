@@ -3,15 +3,15 @@ local fn = vim.fn
 local keymap = vim.keymap.set
 
 -- Commentary
-if fn['dein#tap']('vim-commentary') then
-  keymap({'n', 'o', 'v'}, 'gc', '<Plug>Commentary')
+if fn['dein#tap'] 'vim-commentary' then
+  keymap({ 'n', 'o', 'v' }, 'gc', '<Plug>Commentary')
   keymap('n', 'gcc', '<Plug>CommentaryLine')
   keymap('n', 'cgc', '<Plug>ChangeCommentary')
   keymap('n', 'gcu', '<Plug>Commentary<Plug>Commentary')
 end
 
 -- CtrlSpace
-if fn['dein#tap']('vim-ctrlspace') then
+if fn['dein#tap'] 'vim-ctrlspace' then
   -- Show ctrlspace menu
   keymap('n', '<LocalLeader>c', '<Cmd>CtrlSpace<CR>')
   -- Buffer Navigating
@@ -29,13 +29,13 @@ if fn['dein#tap']('vim-ctrlspace') then
 end
 
 -- EasyAlign
-if fn['dein#tap']('vim-easy-align') then
+if fn['dein#tap'] 'vim-easy-align' then
   keymap('n', 'ga', '<Plug>(EasyAlign)')
   keymap('v', 'ga', '<Plug>(LiveEasyAlign)')
 end
 
 -- EasyMotion
-if fn['dein#tap']('vim-easymotion') then
+if fn['dein#tap'] 'vim-easymotion' then
   -- Line Navigating
   keymap('', '<LocalLeader>j', '<Plug>(easymotion-sol-j)')
   keymap('', '<LocalLeader>J', '<Plug>(easymotion-j)')
@@ -74,15 +74,15 @@ if fn['dein#tap']('vim-easymotion') then
   --   keymap('o', 't', '<Plug>(easymotion-tl-fix)')
   --   keymap('o', 'T', '<Plug>(easymotion-Tl-fix)')
   -- else
-    keymap('o', 'f', '<Plug>(easymotion-fl)')
-    keymap('o', 'F', '<Plug>(easymotion-Fl)')
-    keymap('o', 't', '<Plug>(easymotion-tl)')
-    keymap('o', 'T', '<Plug>(easymotion-Tl)')
+  keymap('o', 'f', '<Plug>(easymotion-fl)')
+  keymap('o', 'F', '<Plug>(easymotion-Fl)')
+  keymap('o', 't', '<Plug>(easymotion-tl)')
+  keymap('o', 'T', '<Plug>(easymotion-Tl)')
   -- end
 end
 
 -- GitGutter
-if fn['dein#tap']('vim-gitgutter') then
+if fn['dein#tap'] 'vim-gitgutter' then
   --Hunk Navigating
   keymap('n', 'sj', '<Plug>(GitGutterNextHunk)')
   keymap('n', 'sk', '<Plug>(GitGutterPrevHunk)')
@@ -91,18 +91,26 @@ if fn['dein#tap']('vim-gitgutter') then
   --Stage Current Hunk
   keymap('n', '<LocalLeader>ss', '<Plug>(GitGutterStageHunk)')
   --Unstage Current File
-  keymap('n', '<LocalLeader>su', "<Cmd>call system('git reset '.expand('%'))<Bar>GitGutterAll<CR>")
+  keymap(
+    'n',
+    '<LocalLeader>su',
+    "<Cmd>call system('git reset '.expand('%'))<Bar>GitGutterAll<CR>"
+  )
   --Hard Reset Current Hunk
   keymap('n', '<LocalLeader>sr', '<Plug>(GitGutterUndoHunk)')
   --Toggle Hunk Preview
-  keymap('n', '<LocalLeader>s<Space>', '<Plug>(helper-gitgutter-toggle-preview)')
+  keymap(
+    'n',
+    '<LocalLeader>s<Space>',
+    '<Plug>(helper-gitgutter-toggle-preview)'
+  )
 end
 
 -- LspSaga
-if fn['dein#tap']('neo-tree.nvim') then
+if fn['dein#tap'] 'neo-tree.nvim' then
   keymap('n', 'd<Space>', '<Cmd>Lspsaga hover_doc<CR>')
   keymap('n', '<Space>d', '<Cmd>Lspsaga preview_definition<CR>')
-  keymap({'n', 'i'}, '<C-k>', '<Cmd>Lspsaga signature_help<CR>')
+  keymap({ 'n', 'i' }, '<C-k>', '<Cmd>Lspsaga signature_help<CR>')
   keymap('n', 'gu', '<Cmd>Lspsaga lsp_finder<CR>')
   keymap('n', 'zi', '<Cmd>Lspsaga code_action<CR>')
   keymap('x', 'zi', '<Cmd>Lspsaga range_code_action<CR>')
@@ -114,7 +122,7 @@ if fn['dein#tap']('neo-tree.nvim') then
 end
 
 -- NeoTree
-if fn['dein#tap']('neo-tree.nvim') then
+if fn['dein#tap'] 'neo-tree.nvim' then
   -- Toggle NeoTree, using <Opt-;>
   keymap('n', '…', '<Cmd>Neotree toggle<CR>')
   -- Find current file in NeoTree, using <Opt-Shift-;>
@@ -122,17 +130,17 @@ if fn['dein#tap']('neo-tree.nvim') then
 end
 
 -- Telescope
-if fn['dein#tap']('telescope.nvim') then
+if fn['dein#tap'] 'telescope.nvim' then
   keymap('n', '<C-P>', '<Cmd>Telescope find_files<CR>')
   keymap('n', '<C-O>', '<Cmd>Telescope buffers<CR>')
 end
 
 -- SymbolsOutline
-if fn['dein#tap']('symbols-outline.nvim') then
+if fn['dein#tap'] 'symbols-outline.nvim' then
   keymap('n', 'K', '<Cmd>SymbolsOutline<CR>')
 end
 
 -- Undotree
-if fn['dein#tap']('undotree') then
+if fn['dein#tap'] 'undotree' then
   keymap('n', 'U', '<Cmd>UndotreeToggle<Bar>wincmd p<CR>')
 end
