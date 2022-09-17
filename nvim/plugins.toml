@@ -46,8 +46,22 @@ hook_add = "lua require 'plugins.neo-tree'"
 # Telescope https://github.com/nvim-telescope/telescope.nvim
 [[plugins]]
 repo = 'nvim-telescope/telescope.nvim'
-depends = ['plenary.nvim']
+depends = ['plenary.nvim', 'telescope-fzf-native.nvim']
 hook_add = "lua require 'plugins.telescope'"
+
+# TelescopeFzfNative https://github.com/nvim-telescope/telescope-fzf-native.nvim
+[[plugins]]
+repo = 'nvim-telescope/telescope-fzf-native.nvim'
+build = 'make'
+
+# ================================
+# Moving & Searching
+# ================================
+
+# EasyMotion https://github.com/easymotion/vim-easymotion
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = "lua require 'plugins.easymotion'"
 
 # ================================
 # Editing
@@ -80,6 +94,12 @@ augroup END
 repo = 'tpope/vim-commentary'
 on_map = '<Plug>Commentary'
 
+# EasyAlign https://github.com/junegunn/vim-easy-align
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+depends = ['vim-repeat']
+on_map = ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)']
+
 # Surround https://github.com/kylechui/nvim-surround
 [[plugins]]
 repo = 'kylechui/nvim-surround'
@@ -94,8 +114,19 @@ hook_add = "lua require 'plugins.undotree'"
 # VisualMulti https://github.com/mg979/vim-visual-multi
 [[plugins]]
 repo = 'mg979/vim-visual-multi'
-on_event = 'InsertEnter'
-hook_source = "lua require 'plugins.visual-multi'"
+# on_event = 'InsertEnter'
+hook_add = "lua require 'plugins.visual-multi'"
+
+# ================================
+# Git
+# ================================
+# GitGutter https://github.com/airblade/vim-gitgutter
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+depends = ['vim-repeat']
+on_func = 'gitgutter#'
+on_event = 'BufEnter'
+hook_add = "lua require 'plugins.gitgutter'"
 
 # ================================
 # Language Server
@@ -159,6 +190,16 @@ repo = 'MunifTanjim/nui.nvim'
 # Plenary https://github.com/nvim-lua/plenary.nvim
 [[plugins]]
 repo = 'nvim-lua/plenary.nvim'
+
+# Repeat https://github.com/tpope/vim-repeat
+[[plugins]]
+repo = 'tpope/vim-repeat'
+lazy = 1
+
+# SymbolsOutline https://github.com/simrat39/symbols-outline.nvim
+[[plugins]]
+repo = 'simrat39/symbols-outline.nvim'
+hook_add = "lua require 'plugins.symbols-outline'"
 
 # TreeSitter https://github.com/nvim-treesitter/nvim-treesitter
 [[plugins]]

@@ -1,18 +1,40 @@
 local lspconfig = require 'lspconfig'
+local cmp_lsp = require 'cmp_nvim_lsp'
+
+local lsp = vim.lsp
+local keymap = vim.keymap.set
+
+local on_attach = function (client, bufnr)
+  vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+  -- keymap
+end
+
+local capabilities = cmp_lsp.update_capabilities(
+  lsp.protocol.make_client_capabilities()
+)
 
 lspconfig.sumneko_lua.setup {
-  Lua = {
-    completion = {
-      callSnippet = 'Replace'
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      diagnostic = {
+        globals = {'vim'}
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true),
+      },
+      telemetry = {
+        enable = false
+      }
     }
   }
 }
 
-vim.lsp.set_log_level('warn')
+lsp.set_log_level('warn')
 
--- icon
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
+lsp.handlers['textDocument/publishDiagnostics'] = lsp.with(
+  lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
     virtual_text = {
       spacing = 4,
@@ -20,3 +42,31 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     },
   }
 )
+
+lsp.protocol.CompletionItemKind = {
+  '', -- Text
+  '', -- Method
+  '', -- Function
+  '', -- Constructor
+  '', -- Field
+  '', -- Variable
+  '', -- Class
+  'ﰮ', -- Interface
+  '', -- Module
+  '', -- Property
+  '', -- Unit
+  '', -- Value
+  '', -- Enum
+  '', -- Keyword
+  '﬌', -- Snippet
+  '', -- Color
+  '', -- File
+  '', -- Reference
+  '', -- Folder
+  '', -- EnumMember
+  '', -- Constant
+  '', -- Struct
+  '', -- Event
+  'ﬦ', -- Operator
+  '', -- TypeParameter
+}

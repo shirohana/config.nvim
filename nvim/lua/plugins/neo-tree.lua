@@ -32,7 +32,7 @@ neotree.setup {
     window = {
       mappings = {
         ['i'] = 'toggle_hidden',
-        ['/'] = 'fuzzy_finder',
+        ['ƒ'] = 'fuzzy_finder', -- <Opt-f>
         ['fd'] = 'fuzzy_finder_directory',
         ['ff'] = 'filter_on_submit',
         ['<C-x>'] = 'clear_filter',
