@@ -5,4 +5,3 @@
 [[plugins]]
 repo = 'folke/lua-dev.nvim'
 lazy = 0
-hook_add = "lua require 'plugins.lua-dev'"

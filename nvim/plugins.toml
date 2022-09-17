@@ -41,13 +41,11 @@ hook_add = "lua require 'plugins.ctrlspace'"
 [[plugins]]
 repo = 'nvim-neo-tree/neo-tree.nvim'
 depends = ['nui.nvim', 'nvim-web-devicons', 'plenary.nvim']
-hook_add = "lua require 'plugins.neo-tree'"
 
 # Telescope https://github.com/nvim-telescope/telescope.nvim
 [[plugins]]
 repo = 'nvim-telescope/telescope.nvim'
 depends = ['plenary.nvim', 'telescope-fzf-native.nvim']
-hook_add = "lua require 'plugins.telescope'"
 
 # TelescopeFzfNative https://github.com/nvim-telescope/telescope-fzf-native.nvim
 [[plugins]]
@@ -103,7 +101,6 @@ on_map = ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)']
 # Surround https://github.com/kylechui/nvim-surround
 [[plugins]]
 repo = 'kylechui/nvim-surround'
-hook_add = "lua require 'plugins.surround'"
 
 # Undotree https://github.com/mbbill/undotree
 [[plugins]]
@@ -136,7 +133,6 @@ hook_add = "lua require 'plugins.gitgutter'"
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 depends = ['lspkind-nvim', 'lspsaga.nvim']
-hook_add = "lua require 'plugins.lspconfig'"
 
 # LspKind https://github.com/onsails/lspkind-nvim
 [[plugins]]
@@ -145,18 +141,15 @@ repo = 'onsails/lspkind-nvim'
 # LspSaga https://github.com/tami5/lspsaga.nvim
 [[plugins]]
 repo = 'tami5/lspsaga.nvim'
-hook_add = "lua require 'plugins.lspsaga'"
 
 # Mason https://github.com/williamboman/mason.nvim
 [[plugins]]
 repo = 'williamboman/mason.nvim'
-hook_add = "lua require 'plugins.mason'"
 
 # NullLs https://github.com/jose-elias-alvarez/null-ls.nvim
 [[plugins]]
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = ['plenary.nvim']
-hook_add = "lua require 'plugins.null-ls'"
 
 # ================================
 # Completion
@@ -166,7 +159,6 @@ hook_add = "lua require 'plugins.null-ls'"
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp'
 depends = ['cmp-buffer', 'cmp-treesitter', 'lspkind-nvim', 'nvim-lspconfig', 'L3MON4D3/LuaSnip']
-hook_add = "lua require 'plugins.cmp'"
 
 # CmpBuffer https://github.com/hrsh7th/cmp-buffer
 [[plugins]]
@@ -205,12 +197,10 @@ lazy = 1
 # SymbolsOutline https://github.com/simrat39/symbols-outline.nvim
 [[plugins]]
 repo = 'simrat39/symbols-outline.nvim'
-hook_add = "lua require 'plugins.symbols-outline'"
 
 # TreeSitter https://github.com/nvim-treesitter/nvim-treesitter
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-hook_add = "lua require 'plugins.treesitter'"
 hook_source = 'TSUpdate'
 
 # WebDevicons https://github.com/kyazdani42/nvim-web-devicons

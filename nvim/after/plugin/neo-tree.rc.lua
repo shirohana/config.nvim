@@ -15,18 +15,18 @@ neotree.setup {
       ['x'] = 'close_node',
       ['zM'] = 'close_all_nodes',
       ['zR'] = 'expand_all_nodes',
-      ['ma'] = { 'add', config = { show_path = 'relative' }},
-      ['mc'] = { 'copy', config = { show_path = 'relative' }},
-      ['mm'] = { 'move', config = { show_path = 'relative' }},
+      ['ma'] = { 'add', config = { show_path = 'relative' } },
+      ['mc'] = { 'copy', config = { show_path = 'relative' } },
+      ['mm'] = { 'move', config = { show_path = 'relative' } },
       ['md'] = 'delete',
-      -- ['y'] = 'copy_to_clipboard',
-      -- ['x'] = 'cut_to_clipboard',
-      -- ['p'] = 'paste_from_clipboard',
+      ['y'] = 'copy_to_clipboard',
+      ['x'] = 'cut_to_clipboard',
+      ['p'] = 'paste_from_clipboard',
       ['q'] = 'close_window',
       ['R'] = 'refresh',
       ['['] = 'prev_source',
       [']'] = 'next_source',
-    }
+    },
   },
   filesystem = {
     window = {
@@ -40,8 +40,8 @@ neotree.setup {
         ['C'] = 'set_root',
         [';k'] = 'prev_git_modified',
         [';j'] = 'next_git_modified',
-      }
-    }
+      },
+    },
   },
   buffers = {
     window = {
