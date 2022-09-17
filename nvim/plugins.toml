@@ -152,6 +152,12 @@ hook_add = "lua require 'plugins.lspsaga'"
 repo = 'williamboman/mason.nvim'
 hook_add = "lua require 'plugins.mason'"
 
+# NullLs https://github.com/jose-elias-alvarez/null-ls.nvim
+[[plugins]]
+repo = 'jose-elias-alvarez/null-ls.nvim'
+depends = ['plenary.nvim']
+hook_add = "lua require 'plugins.null-ls'"
+
 # ================================
 # Completion
 # ================================
