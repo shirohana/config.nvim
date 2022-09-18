@@ -1,8 +1,11 @@
-local fn = vim.fn
 local keymap = vim.keymap.set
 
+local tap = function(name)
+  return vim.fn['dein#tap'](name) == 1
+end
+
 -- Commentary
-if fn['dein#tap'] 'vim-commentary' then
+if tap 'vim-commentary' then
   keymap({ 'n', 'o', 'v' }, 'gc', '<Plug>Commentary')
   keymap('n', 'gcc', '<Plug>CommentaryLine')
   keymap('n', 'cgc', '<Plug>ChangeCommentary')
@@ -10,7 +13,7 @@ if fn['dein#tap'] 'vim-commentary' then
 end
 
 -- CtrlSpace
-if fn['dein#tap'] 'vim-ctrlspace' then
+if tap 'vim-ctrlspace' then
   -- Show ctrlspace menu
   keymap('n', '<LocalLeader>c', '<Cmd>CtrlSpace<CR>')
   -- Buffer navigating
@@ -28,13 +31,13 @@ if fn['dein#tap'] 'vim-ctrlspace' then
 end
 
 -- EasyAlign
-if fn['dein#tap'] 'vim-easy-align' then
+if tap 'vim-easy-align' then
   keymap('n', 'ga', '<Plug>(EasyAlign)')
   keymap('v', 'ga', '<Plug>(LiveEasyAlign)')
 end
 
 -- EasyMotion
-if fn['dein#tap'] 'vim-easymotion' then
+if tap 'vim-easymotion' then
   -- Line navigating
   -- keymap('', '<LocalLeader>j', '<Plug>(easymotion-sol-j)')
   keymap('', '<LocalLeader>J', '<Plug>(easymotion-j)')
@@ -80,8 +83,18 @@ if fn['dein#tap'] 'vim-easymotion' then
   -- end
 end
 
+-- Fzf
+if tap 'fzf.vim' then
+  -- if mapcheck('<C-o>', 'n') == ''
+  --   nnoremap <silent> <C-o> :<C-u>Buffers<CR>
+  -- endif
+  -- nnoremap <silent> <C-p> :<C-u>Files<CR>
+  -- Search text, using <Opt-f>
+  keymap('n', 'ƒ', ':<C-u>Ag<Space>')
+end
+
 -- GitGutter
-if fn['dein#tap'] 'vim-gitgutter' then
+if tap 'vim-gitgutter' then
   -- Hunk navigating
   keymap('n', 'sj', '<Plug>(GitGutterNextHunk)')
   keymap('n', 'sk', '<Plug>(GitGutterPrevHunk)')
@@ -105,7 +118,8 @@ if fn['dein#tap'] 'vim-gitgutter' then
   )
 end
 
-if fn['dein#tap'] 'hop.nvim' then
+-- Hop
+if tap 'hop.nvim' then
   -- Line navigating
   keymap('', '<LocalLeader>j', '<Cmd>HopLineAC<CR>')
   -- keymap('', '<LocalLeader>J', '<Cmd>HopLineStartAC<CR>')
@@ -121,7 +135,7 @@ if fn['dein#tap'] 'hop.nvim' then
 end
 
 -- LspSaga
-if fn['dein#tap'] 'neo-tree.nvim' then
+if tap 'lspsaga.nvim' then
   keymap('n', 'd<Space>', '<Cmd>Lspsaga hover_doc<CR>')
   keymap('n', '<Space>d', '<Cmd>Lspsaga preview_definition<CR>')
   keymap({ 'n', 'i' }, '<C-k>', '<Cmd>Lspsaga signature_help<CR>')
@@ -136,7 +150,7 @@ if fn['dein#tap'] 'neo-tree.nvim' then
 end
 
 -- NeoTree
-if fn['dein#tap'] 'neo-tree.nvim' then
+if tap 'neo-tree.nvim' then
   -- Toggle NeoTree, using <Opt-;>
   keymap('n', '…', '<Cmd>Neotree toggle<CR>')
   -- Find current file in NeoTree, using <Opt-Shift-;>
@@ -144,17 +158,25 @@ if fn['dein#tap'] 'neo-tree.nvim' then
 end
 
 -- Telescope
-if fn['dein#tap'] 'telescope.nvim' then
+if tap 'telescope.nvim' then
   keymap('n', '<C-P>', '<Cmd>Telescope find_files<CR>')
   keymap('n', '<C-O>', '<Cmd>Telescope buffers<CR>')
 end
 
+-- SplitJoin
+if tap 'splitjoin.vim' then
+  keymap('n', 'gS', '<Plug>SplitjoinSplit')
+  keymap('n', 'gJ', '<Plug>SplitjoinJoin')
+  keymap('n', 'gs', "<Cmd>exe'SplitjoinJoin'<Bar>exe'SplitjoinSplit'<CR>")
+  keymap('n', 'gj', "<Cmd>exe'SplitjoinSplit'<Bar>exe'SplitjoinJoin'<CR>")
+end
+
 -- SymbolsOutline
-if fn['dein#tap'] 'symbols-outline.nvim' then
+if tap 'symbols-outline.nvim' then
   keymap('n', 'K', '<Cmd>SymbolsOutline<CR>')
 end
 
 -- Undotree
-if fn['dein#tap'] 'undotree' then
+if tap 'undotree' then
   keymap('n', 'U', '<Cmd>UndotreeToggle<Bar>wincmd p<CR>')
 end

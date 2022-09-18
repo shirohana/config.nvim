@@ -30,36 +30,28 @@ cmp.setup {
       select = true,
     },
   },
-  -- window = {
-  --   completion = {
-  --     -- winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:Pmenu',
-  --     col_offset = -2,
-  --     -- side_padding = 0,
-  --   },
-  -- },
+  window = {
+    completion = {
+      col_offset = -3,
+      side_padding = 0,
+    },
+  },
   formatting = {
-    format = lspkind.cmp_format { mode = 'symbol_text', maxwidth = 50 },
-    -- fields = { 'kind', 'abbr', 'menu' },
-
-    -- format = function(entry, vim_item)
-    --   local kind = lspkind.cmp_format { mode = 'symbol_text', maxwidth = 50 }(
-    --     entry,
-    --     vim_item
-    --   )
-    --   local strings = vim.split(kind.kind, '%s', { trimempty = true })
-    --   kind.kind = strings[1]
-    --   kind.menu = '    (' .. strings[2] .. ')'
-    --   return kind
-    -- end,
-
-    -- menu = {
-    --   buffer = '‹Buffer›',
-    --   nvim_lsp = '‹LSP›',
-    -- },
+    -- format = lspkind.cmp_format { mode = 'symbol_text', maxwidth = 50 },
+    fields = { 'kind', 'abbr', 'menu' },
+    format = function(entry, vim_item)
+      local kind = lspkind.cmp_format { mode = 'symbol_text', maxwidth = 50 }(
+        entry,
+        vim_item
+      )
+      local strings = vim.split(kind.kind, '%s', { trimempty = true })
+      kind.kind = ' ' .. strings[1] .. ' '
+      kind.menu = '  (' .. strings[2] .. ')'
+      return kind
+    end,
+    menu = {
+      buffer = '‹Buffer›',
+      nvim_lsp = '‹LSP›',
+    },
   },
 }
-
--- vim.cmd [[
---   set completeopt=menuone,noinsert,noselect
---   highlight! default link CmpItemKind CmpItemMenuDefault
--- ]]]]

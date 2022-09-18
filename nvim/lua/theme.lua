@@ -1,11 +1,12 @@
 -- opt.t_Co = 256
 
-if vim.fn.has 'termguicolors' then
+if vim.fn.has 'termguicolors' == 1 then
   vim.opt.termguicolors = true
 end
 
 vim.g.neosolarized_termtrans = 1
 vim.cmd 'colorscheme NeoSolarized'
+-- vim.cmd 'colorscheme tokyonight'
 
 -- vim.cmd [[
 -- " gray
