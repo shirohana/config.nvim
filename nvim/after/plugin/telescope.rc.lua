@@ -1,4 +1,7 @@
-local telescope = require 'telescope'
+local exists, telescope = pcall(require, 'telescope')
+if not exists then
+  return
+end
 
 telescope.load_extension 'fzf'
 

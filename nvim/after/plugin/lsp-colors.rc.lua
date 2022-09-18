@@ -1,4 +1,7 @@
-local colors = require 'lsp-colors'
+local exists, colors = pcall(require, 'lsp-colors')
+if not exists then
+  return
+end
 
 colors.setup {
   Error = '#db4b4b',

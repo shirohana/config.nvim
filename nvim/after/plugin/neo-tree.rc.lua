@@ -1,4 +1,7 @@
-local neotree = require 'neo-tree'
+local exists, neotree = pcall(require, 'neo-tree')
+if not exists then
+  return
+end
 
 vim.g.neo_tree_remove_legacy_commands = 1
 

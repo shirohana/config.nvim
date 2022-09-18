@@ -1,3 +1,11 @@
+local exists, lualine = pcall(require, 'lualine')
+if not exists then
+  return
+end
+
+local solarized_dark =
+  require 'plugins.lualine.themes.customized_solarized_dark'
+
 local function ctrlspace_buffers()
   return [[buffers]]
 end
@@ -6,9 +14,7 @@ local function ctrlspace_tabs()
   return [[tabs]]
 end
 
-local solarized_dark = require 'plugins.lualine.themes.customized_solarized_dark'
-
-require 'lualine'.setup {
+lualine.setup {
   options = {
     theme = solarized_dark,
     icons_enabled = true,
@@ -19,7 +25,7 @@ require 'lualine'.setup {
 
   sections = {
     lualine_a = {
-      { 'mode', padding = 0, separator = { left = ' ', right = '' }},
+      { 'mode', padding = 0, separator = { left = ' ', right = '' } },
     },
     lualine_b = { 'diagnostics', 'diff' },
     lualine_c = { 'filename' },
@@ -43,15 +49,19 @@ require 'lualine'.setup {
 
   tabline = {
     lualine_a = {
-      (function() return 'Buffers'; end),
+      function()
+        return 'Buffers'
+      end,
     },
     lualine_b = {},
     lualine_c = { 'buffers' },
     -- lualine_c = { 'ctrlspace_buffers' },
     lualine_x = {},
-    lualine_y = {ctrlspace_tabs},
+    lualine_y = { ctrlspace_tabs },
     lualine_z = {
-      (function() return 'Tabs'; end),
+      function()
+        return 'Tabs'
+      end,
     },
   },
 
