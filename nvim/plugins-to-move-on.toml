@@ -39,12 +39,6 @@ hook_source = 'source $NVIM_PLUGINS/fzf.vim'
 # Moving & Searching
 # ================================
 
-# Hop
-# https://github.com/phaazon/hop.nvim
-[[plugins]]
-repo = 'phaazon/hop.nvim'
-hook_add = 'source $NVIM_PLUGINS/hop.rc.lua'
-
 # Incsearch
 # https://github.com/haya14busa/incsearch.vim
 [[plugins]]
@@ -107,68 +101,3 @@ hook_add = '''
   let g:splitjoin_join_mapping = 0
   let g:splitjoin_split_mapping = 0
 '''
-
-# UltiSnips
-# https://github.com/SirVer/ultisnips
-[[plugins]]
-repo = 'SirVer/ultisnips'
-on_event = 'InsertEnter'
-on_ft = 'snippets'
-hook_add = '''
-  let g:UltiSnipsSnippetDirectories = [$NVIM_SNIPPETS]
-  let g:UltiSnipsEnableSnipMate = 0
-  autocmd MyAutoCmd BufWritePost *.snippets call UltiSnips#RefreshSnippets()
-'''
-
-# ================================
-# Utility
-# ================================
-
-# LSP
-# https://github.com/neovim/nvim-lspconfig
-# https://github.com/williamboman/nvim-lsp-installer
-# https://github.com/tami5/lspsaga.nvim
-# https://github.com/onsails/lspkind-nvim
-[[plugins]]
-repo = 'tami5/lspsaga.nvim'
-hook_add = 'source $NVIM_PLUGINS/lspsaga.rc.lua'
-[[plugins]]
-repo = 'onsails/lspkind-nvim'
-[[plugins]]
-repo = 'neovim/nvim-lspconfig'
-depends = ['lspsaga.nvim', 'lspkind-nvim']
-# on_ft = ['javascript', 'typescript', 'typescriptreact', 'typescript.tsx' 'python']
-hook_add = 'source $NVIM_PLUGINS/lspconfig.rc.lua'
-[[plugins]]
-repo = 'williamboman/nvim-lsp-installer'
-depends = []
-# hook_add = 'source $NVIM_PLUGINS/lsp-installer.rc.lua'
-
-# CMP Completion
-# https://github.com/hrsh7th/nvim-cmp
-# https://github.com/hrsh7th/cmp-buffer
-# https://github.com/hrsh7th/cmp-nvim-lsp
-# https://github.com/L3MON4D3/LuaSnip
-# https://github.com/ray-x/cmp-treesitter
-# https://github.com/quangnguyen30192/cmp-nvim-ultisnips
-[[plugins]]
-repo = 'hrsh7th/cmp-buffer'
-[[plugins]]
-repo = 'ray-x/cmp-treesitter'
-[[plugins]]
-repo = 'quangnguyen30192/cmp-nvim-ultisnips'
-depends = ['nvim-cmp']
-hook_add = 'source $NVIM_PLUGINS/cmp-nvim-ultisnips.rc.lua'
-[[plugins]]
-repo = 'L3MON4D3/LuaSnip'
-[[plugins]]
-repo = 'hrsh7th/nvim-cmp'
-depends = ['cmp-buffer', 'cmp-treesitter', 'lspkind-nvim', 'nvim-lspconfig', 'L3MON4D3/LuaSnip']
-# on_ft = ['javascript', 'typescript', 'typescriptreact', 'typescript.tsx' 'python']
-hook_add = '''
-  source $NVIM_PLUGINS/cmp.rc.lua
-  set completeopt=menuone,noinsert,noselect
-'''
-[[plugins]]
-repo = 'hrsh7th/cmp-nvim-lsp'
-depends = ['nvim-lspconfig']

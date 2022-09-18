@@ -66,8 +66,8 @@ keymap('n', '<Leader>q', '<Plug>(close-buffer-keep-layout)')
 -- Save & wipe buffer
 -- keymap('n', '<Leader>W', ':<C-u>write<Bar>exec "normal \\<Plug>(close-buffer-keep-layout)"<CR>')
 -- Buffer navigating, using <Opt-[> & <Opt-]>
-keymap('n', '‘', '<Cmd>PrevBuffer<CR>')
-keymap('n', '“', '<Cmd>NextBuffer<CR>')
+keymap('n', '“', '<Cmd>PrevBuffer<CR>')
+keymap('n', '‘', '<Cmd>NextBuffer<CR>')
 -- Buffer navigating with index
 keymap('n', '<Leader>1', '<Cmd>call helper#buffer#GoNthBuffer(0)<CR>')
 keymap('n', '<Leader>2', '<Cmd>call helper#buffer#GoNthBuffer(1)<CR>')

@@ -22,6 +22,10 @@ repo = 'vim-airline/vim-airline'
 depends = ['vim-airline-themes']
 hook_add = "lua require 'plugins.airline'"
 
+# Cursorword https://github.com/itchyny/vim-cursorword
+[[plugins]]
+repo = 'itchyny/vim-cursorword'
+
 # Lualine https://github.com/nvim-lualine/lualine.nvim
 # [[plugins]]
 # repo = 'nvim-lualine/lualine.nvim'
@@ -60,6 +64,10 @@ build = 'make'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 hook_add = "lua require 'plugins.easymotion'"
+
+# Hop https://github.com/phaazon/hop.nvim
+[[plugins]]
+repo = 'phaazon/hop.nvim'
 
 # ================================
 # Editing
@@ -108,6 +116,17 @@ repo = 'mbbill/undotree'
 on_cmd = 'UndotreeToggle'
 hook_add = "lua require 'plugins.undotree'"
 
+# https://github.com/SirVer/ultisnips
+[[plugins]]
+repo = 'SirVer/ultisnips'
+on_event = 'InsertEnter'
+on_ft = 'snippets'
+hook_add = '''
+  let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
+  let g:UltiSnipsEnableSnipMate = 0
+  " autocmd BufWritePost *.snippets call UltiSnips#RefreshSnippets()
+'''
+
 # VisualMulti https://github.com/mg979/vim-visual-multi
 [[plugins]]
 repo = 'mg979/vim-visual-multi'
@@ -128,6 +147,10 @@ hook_add = "lua require 'plugins.gitgutter'"
 # ================================
 # Language Server
 # ================================
+
+# LspColors https://github.com/folke/lsp-colors.nvim
+[[plugins]]
+repo = 'folke/lsp-colors.nvim'
 
 # LspConfig https://github.com/neovim/nvim-lspconfig
 [[plugins]]
@@ -172,6 +195,11 @@ depends = ['nvim-lspconfig']
 # CmpTreeSitter https://github.com/ray-x/cmp-treesitter
 [[plugins]]
 repo = 'ray-x/cmp-treesitter'
+
+# CmpUltiSnips https://github.com/quangnguyen30192/cmp-nvim-ultisnips
+[[plugins]]
+repo = 'quangnguyen30192/cmp-nvim-ultisnips'
+depends = ['ultisnips']
 
 # LuaSnip https://github.com/L3MON4D3/LuaSnip
 [[plugins]]

@@ -1,4 +1,3 @@
-local g = vim.g
 local fn = vim.fn
 local keymap = vim.keymap.set
 
@@ -14,9 +13,9 @@ end
 if fn['dein#tap'] 'vim-ctrlspace' then
   -- Show ctrlspace menu
   keymap('n', '<LocalLeader>c', '<Cmd>CtrlSpace<CR>')
-  -- Buffer Navigating
+  -- Buffer navigating
   -- nnoremap <silent> <C-o> :<C-u>CtrlSpaceBuffers<CR>
-  -- Create New Workspace, using <Opt-Shift-w>
+  -- Create new workspace, using <Opt-Shift-w>
   keymap('n', '„', '<Cmd>CtrlSpaceNewWorkspace<CR>')
   -- Load Workspace, using <Opt-w>
   keymap('n', '∑', '<Cmd>LoadWorkspace<CR>')
@@ -36,17 +35,17 @@ end
 
 -- EasyMotion
 if fn['dein#tap'] 'vim-easymotion' then
-  -- Line Navigating
-  keymap('', '<LocalLeader>j', '<Plug>(easymotion-sol-j)')
+  -- Line navigating
+  -- keymap('', '<LocalLeader>j', '<Plug>(easymotion-sol-j)')
   keymap('', '<LocalLeader>J', '<Plug>(easymotion-j)')
-  keymap('', '<LocalLeader>k', '<Plug>(easymotion-sol-k)')
+  -- keymap('', '<LocalLeader>k', '<Plug>(easymotion-sol-k)')
   keymap('', '<LocalLeader>K', '<Plug>(easymotion-k)')
   keymap('', '<LocalLeader>a', '<Plug>(easymotion-linebackward)')
   keymap('', '<LocalLeader>d', '<Plug>(easymotion-lineforward)')
-  -- Word Navigating
-  keymap('', '<LocalLeader>w', '<Plug>(easymotion-w)')
+  -- Word navigating
+  -- keymap('', '<LocalLeader>w', '<Plug>(easymotion-w)')
   keymap('', '<LocalLeader>W', '<Plug>(easymotion-W)')
-  keymap('', '<LocalLeader>b', '<Plug>(easymotion-b)')
+  -- keymap('', '<LocalLeader>b', '<Plug>(easymotion-b)')
   keymap('', '<LocalLeader>B', '<Plug>(easymotion-B)')
   keymap('', '<LocalLeader>e', '<Plug>(easymotion-e)')
   keymap('', '<LocalLeader>E', '<Plug>(easymotion-E)')
@@ -83,27 +82,42 @@ end
 
 -- GitGutter
 if fn['dein#tap'] 'vim-gitgutter' then
-  --Hunk Navigating
+  -- Hunk navigating
   keymap('n', 'sj', '<Plug>(GitGutterNextHunk)')
   keymap('n', 'sk', '<Plug>(GitGutterPrevHunk)')
-  --Refresh Gutter
+  -- Refresh gutter
   keymap('n', '<LocalLeader>sa', '<Cmd>GitGutterAll<CR>')
-  --Stage Current Hunk
+  -- Stage current hunk
   keymap('n', '<LocalLeader>ss', '<Plug>(GitGutterStageHunk)')
-  --Unstage Current File
+  -- Unstage current file
   keymap(
     'n',
     '<LocalLeader>su',
     "<Cmd>call system('git reset '.expand('%'))<Bar>GitGutterAll<CR>"
   )
-  --Hard Reset Current Hunk
+  -- Hard reset current hunk
   keymap('n', '<LocalLeader>sr', '<Plug>(GitGutterUndoHunk)')
-  --Toggle Hunk Preview
+  -- Toggle hunk preview
   keymap(
     'n',
     '<LocalLeader>s<Space>',
     '<Plug>(helper-gitgutter-toggle-preview)'
   )
+end
+
+if fn['dein#tap'] 'hop.nvim' then
+  -- Line navigating
+  keymap('', '<LocalLeader>j', '<Cmd>HopLineAC<CR>')
+  -- keymap('', '<LocalLeader>J', '<Cmd>HopLineStartAC<CR>')
+  keymap('', '<LocalLeader>k', '<Cmd>HopLineBC<CR>')
+  -- keymap('', '<LocalLeader>K', '<Cmd>HopLineStartBC<CR>')
+  -- keymap('', '<LocalLeader>a', '<Cmd>HopWordCurrentLineBC<CR>')
+  -- keymap('', '<LocalLeader>d', '<Cmd>HopWordCurrentLineAC<CR>')
+  -- " Word navigating
+  keymap('', '<LocalLeader>w', '<Cmd>HopWordAC<CR>')
+  keymap('', '<LocalLeader>b', '<Cmd>HopWordBC<CR>')
+  -- " Word searching
+  -- keymap('', 'ss', '<Cmd>HopPattern<CR>')
 end
 
 -- LspSaga
