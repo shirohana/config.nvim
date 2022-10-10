@@ -83,12 +83,19 @@ if tap 'vim-easymotion' then
   -- end
 end
 
+-- Fugitive
+if tap 'vim-fugitive' then
+  keymap('n', 'gb', '<Cmd>Git blame<CR>')
+end
+
 -- Fzf
 if tap 'fzf.vim' then
-  -- if mapcheck('<C-o>', 'n') == ''
-  --   nnoremap <silent> <C-o> :<C-u>Buffers<CR>
-  -- endif
-  -- nnoremap <silent> <C-p> :<C-u>Files<CR>
+  vim.cmd [[
+    if mapcheck('<C-o>', 'n') == ''
+      nnoremap <silent> <C-O> :<Cmd>Buffers<CR>
+    endif
+  ]]
+  keymap('n', '<C-P>', '<Cmd>Files<CR>')
   -- Search text, using <Opt-f>
   keymap('n', 'ƒ', ':<C-u>Ag<Space>')
 end
@@ -157,6 +164,14 @@ if tap 'neo-tree.nvim' then
   keymap('n', 'Ú', '<Cmd>Neotree reveal<CR>')
 end
 
+-- NvimTree
+if tap 'nvim-tree.lua' then
+  -- Toggle NeoTree, using <Opt-;>
+  keymap('n', '…', '<Cmd>NvimTreeToggle<CR>')
+  -- Find current file in NeoTree, using <Opt-Shift-;>
+  keymap('n', 'Ú', '<Cmd>NvimTreeFindFile<CR>')
+end
+
 -- Telescope
 if tap 'telescope.nvim' then
   keymap('n', '<C-P>', '<Cmd>Telescope find_files<CR>')
@@ -174,6 +189,11 @@ end
 -- SymbolsOutline
 if tap 'symbols-outline.nvim' then
   keymap('n', 'K', '<Cmd>SymbolsOutline<CR>')
+end
+
+-- Trouble
+if tap 'trouble.nvim' then
+  keymap('n', '<LocalLeader>z<Space>', '<Cmd>TroubleToggle<CR>')
 end
 
 -- Undotree

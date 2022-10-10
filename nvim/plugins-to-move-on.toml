@@ -2,15 +2,6 @@
 # Appearance
 # ================================
 
-# Cursorword
-# https://github.com/itchyny/vim-cursorword
-[[plugins]]
-repo = 'itchyny/vim-cursorword'
-lazy = 0
-hook_add = '''
-  autocmd MyAutoCmd FileType nerdtree let b:cursorword = 0
-'''
-
 # lualine.nvim
 # https://github.com/nvim-lualine/lualine.nvim
 # [[plugins]]
@@ -22,36 +13,9 @@ hook_add = '''
 # File Navigation
 # ================================
 
-# ZFZ
-# https://github.com/junegunn/fzf.vim
-[[plugins]]
-repo = 'junegunn/fzf'
-hook_post_update = './install --bin'
-# We need only executable
-merged = 0
-lazy = 1
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-on_cmd = ['FzfAg', 'Files', 'GFiles', 'Buffers', 'Ag', 'Tags', 'BTags', 'Marks', 'Windows', 'History:', 'Maps', 'Filetypes']
-hook_source = 'source $NVIM_PLUGINS/fzf.vim'
-
 # ================================
 # Moving & Searching
 # ================================
-
-# Incsearch
-# https://github.com/haya14busa/incsearch.vim
-[[plugins]]
-repo = 'haya14busa/incsearch.vim'
-on_func = 'incsearch#'
-[[plugins]]
-repo = 'haya14busa/incsearch-easymotion.vim'
-depends = ['incsearch.vim', 'vim-easymotion']
-on_map = '<Plug>(incsearch-easymotion-'
-[[plugins]]
-repo = 'haya14busa/incsearch-fuzzy.vim'
-depends = 'incsearch.vim'
-on_map = '<Plug>(incsearch-fuzzy-'
 
 # ================================
 # Editing

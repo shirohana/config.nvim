@@ -30,6 +30,10 @@ hook_add = "lua require 'plugins.airline'"
 [[plugins]]
 repo = 'NvChad/nvim-colorizer.lua'
 
+# DocumentColor https://github.com/mrshmllow/document-color.nvim
+[[plugins]]
+repo = 'mrshmllow/document-color.nvim'
+
 # Cursorword https://github.com/itchyny/vim-cursorword
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
@@ -60,24 +64,25 @@ repo = 'junegunn/fzf.vim'
 on_cmd = ['FzfAg', 'Files', 'GFiles', 'Buffers', 'Ag', 'Tags', 'BTags', 'Marks', 'Windows', 'History:', 'Maps', 'Filetypes']
 
 # NvimTree https://github.com/kyazdani42/nvim-tree.lua
-[[plugins]]
-repo = 'kyazdani42/nvim-tree.lua'
-depends = ['nvim-web-devicons']
+# [[plugins]]
+# repo = 'kyazdani42/nvim-tree.lua'
+# depends = ['nvim-web-devicons']
 
 # NeoTree https://github.com/nvim-neo-tree/neo-tree.nvim
-# [[plugins]]
-# repo = 'nvim-neo-tree/neo-tree.nvim'
-# depends = ['nui.nvim', 'nvim-web-devicons', 'plenary.nvim']
+[[plugins]]
+repo = 'nvim-neo-tree/neo-tree.nvim'
+depends = ['nui.nvim', 'nvim-web-devicons', 'plenary.nvim']
 
 # Telescope https://github.com/nvim-telescope/telescope.nvim
-[[plugins]]
-repo = 'nvim-telescope/telescope.nvim'
-depends = ['plenary.nvim', 'telescope-fzf-native.nvim']
+# [[plugins]]
+# repo = 'nvim-telescope/telescope.nvim'
+# depends = ['plenary.nvim', 'telescope-fzf-native.nvim']
 
 # TelescopeFzfNative https://github.com/nvim-telescope/telescope-fzf-native.nvim
 [[plugins]]
 repo = 'nvim-telescope/telescope-fzf-native.nvim'
 build = 'make'
+lazy = 1
 
 # ================================
 # Moving & Searching
@@ -99,13 +104,13 @@ repo = 'phaazon/hop.nvim'
 # AutoPairs https://github.com/jiangmiao/auto-pairs
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
-on_event = 'InsertEnter'
+# on_event = 'InsertEnter'
 hook_add = "lua require 'plugins.auto-pairs'"
 
 # BetterWhitespace https://github.com/ntpeters/vim-better-whitespace
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
-on_event = 'BufEnter'
+# on_event = 'BufEnter'
 hook_add = '''
 let g:better_whitespace_operator = 0
 let g:show_spaces_that_precede_tabs = 1
@@ -151,7 +156,7 @@ hook_add = "lua require 'plugins.undotree'"
 # https://github.com/SirVer/ultisnips
 [[plugins]]
 repo = 'SirVer/ultisnips'
-on_event = 'InsertEnter'
+# on_event = 'InsertEnter'
 on_ft = 'snippets'
 hook_add = '''
   let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
@@ -163,18 +168,97 @@ hook_add = '''
 [[plugins]]
 repo = 'mg979/vim-visual-multi'
 # on_event = 'InsertEnter'
-hook_add = "lua require 'plugins.visual-multi'"
+# hook_add = "lua require 'plugins.visual-multi'"
+hook_add = """
+let g:VM_default_mappings = 0
+let g:VM_maps = {}
+
+let g:VM_maps['Find Under']                  = '<C-n>'
+let g:VM_maps['Find Subword Under']          = '<C-n>'
+let g:VM_maps["Select All"]                  = ';;A'
+let g:VM_maps["Start Regex Search"]          = ';;/'
+" let g:VM_maps["Add Cursor Down"]             = '<C-Down>'
+" let g:VM_maps["Add Cursor Up"]               = '<C-Up>'
+let g:VM_maps["Add Cursor At Pos"]           = ';;\'
+
+let g:VM_maps["Visual Regex"]                = ';;/'
+let g:VM_maps["Visual All"]                  = ';;A'
+let g:VM_maps["Visual Add"]                  = ';;a'
+let g:VM_maps["Visual Find"]                 = ';;f'
+let g:VM_maps["Visual Cursors"]              = ';;c'
+
+let g:VM_maps["Switch Mode"]                 = '<Tab>'
+
+let g:VM_maps["Find Next"]                   = ']'
+let g:VM_maps["Find Prev"]                   = '['
+let g:VM_maps["Goto Next"]                   = '}'
+let g:VM_maps["Goto Prev"]                   = '{'
+let g:VM_maps["Seek Next"]                   = '<C-f>'
+let g:VM_maps["Seek Prev"]                   = '<C-b>'
+let g:VM_maps["Skip Region"]                 = 'q'
+let g:VM_maps["Remove Region"]               = 'Q'
+let g:VM_maps["Invert Direction"]            = 'o'
+let g:VM_maps["Find Operator"]               = "m"
+let g:VM_maps["Surround"]                    = 'S'
+let g:VM_maps["Replace Pattern"]             = 'R'
+
+" let g:VM_maps["Tools Menu"]                  = ';;`'
+let g:VM_maps["Show Registers"]              = ';;"'
+" let g:VM_maps["Case Setting"]                = ';;c'
+let g:VM_maps["Toggle Whole Word"]           = ';;w'
+let g:VM_maps["Transpose"]                   = ';;t'
+let g:VM_maps["Align"]                       = ';;a'
+let g:VM_maps["Duplicate"]                   = ';;d'
+let g:VM_maps["Rewrite Last Search"]         = ';;r'
+let g:VM_maps["Merge Regions"]               = ';;m'
+let g:VM_maps["Split Regions"]               = ';;s'
+let g:VM_maps["Remove Last Region"]          = ';;q'
+let g:VM_maps["Visual Subtract"]             = ';;s'
+let g:VM_maps["Case Conversion Menu"]        = ';;C'
+let g:VM_maps["Search Menu"]                 = ';;S'
+
+let g:VM_maps["Run Normal"]                  = ';;z'
+let g:VM_maps["Run Last Normal"]             = ';;Z'
+let g:VM_maps["Run Visual"]                  = ';;v'
+let g:VM_maps["Run Last Visual"]             = ';;V'
+let g:VM_maps["Run Ex"]                      = ';;x'
+let g:VM_maps["Run Last Ex"]                 = ';;X'
+let g:VM_maps["Run Macro"]                   = ';;@'
+let g:VM_maps["Align Char"]                  = ';;<'
+let g:VM_maps["Align Regex"]                 = ';;>'
+let g:VM_maps["Numbers"]                     = ';;n'
+let g:VM_maps["Numbers Append"]              = ';;N'
+let g:VM_maps["Zero Numbers"]                = ';;0n'
+let g:VM_maps["Zero Numbers Append"]         = ';;0N'
+" let g:VM_maps["Shrink"]                      = ";;-"
+" let g:VM_maps["Enlarge"]                     = ";;+"
+
+" let g:VM_maps["Toggle Block"]                = ';;<BS>'
+" let g:VM_maps["Toggle Single Region"]        = ';;<CR>'
+" let g:VM_maps["Toggle Multiline"]            = ';;M'
+"""
 
 # ================================
 # Git
 # ================================
-# GitGutter https://github.com/airblade/vim-gitgutter
+
+# Fugitive https://github.com/tpope/vim-fugitive
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
-depends = ['vim-repeat']
-on_func = 'gitgutter#'
+repo = 'tpope/vim-fugitive'
+on_cmd = 'Git'
 on_event = 'BufEnter'
-hook_add = "lua require 'plugins.gitgutter'"
+
+# GitGutter https://github.com/airblade/vim-gitgutter
+# [[plugins]]
+# repo = 'airblade/vim-gitgutter'
+# depends = ['vim-repeat']
+# on_func = 'gitgutter#'
+# # on_event = 'BufEnter'
+# hook_add = "lua require 'plugins.gitgutter'"
+
+# GitSigns https://github.com/lewis6991/gitsigns.nvim
+[[plugins]]
+repo = 'lewis6991/gitsigns.nvim'
 
 # ================================
 # Language Server
@@ -205,6 +289,11 @@ repo = 'williamboman/mason.nvim'
 [[plugins]]
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = ['plenary.nvim']
+
+# Trouble https://github.com/folke/trouble.nvim
+[[plugins]]
+repo = 'folke/trouble.nvim'
+depends = ['nvim-web-devicons']
 
 # ================================
 # Completion
@@ -242,12 +331,14 @@ repo = 'L3MON4D3/LuaSnip'
 # ================================
 
 # Nui https://github.com/MunifTanjim/nui.nvim
-# [[plugins]]
-# repo = 'MunifTanjim/nui.nvim'
+[[plugins]]
+repo = 'MunifTanjim/nui.nvim'
+lazy =1
 
 # Plenary https://github.com/nvim-lua/plenary.nvim
 [[plugins]]
 repo = 'nvim-lua/plenary.nvim'
+lazy =1
 
 # Repeat https://github.com/tpope/vim-repeat
 [[plugins]]

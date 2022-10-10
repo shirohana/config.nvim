@@ -1,11 +1,16 @@
 local lspconfig = require 'lspconfig'
-local cmp_lsp = require 'cmp_nvim_lsp'
+local dcolor = require 'document-color'
 
 local api = vim.api
 local lsp = vim.lsp
 local keymap = vim.keymap.set
 
 local on_attach = function(client, bufnr)
+  if client.server_capabilities.colorProvider then
+    dcolor.buf_attach(bufnr)
+    -- dcolor.buf_toggle()
+  end
+
   local function bkeymap(mode, lhs, rhs)
     keymap(mode, lhs, rhs, { buffer = bufnr })
   end
@@ -32,6 +37,14 @@ local on_attach = function(client, bufnr)
   -- bkeymap('n', '<space>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>')
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.textDocument.colorProvider = {
+  dynamicRegistration = true,
+}
+
+lspconfig.prismals.setup {}
+
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   settings = {
@@ -49,6 +62,11 @@ lspconfig.sumneko_lua.setup {
       },
     },
   },
+}
+
+lspconfig.tailwindcss.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
 }
 
 lspconfig.tsserver.setup {

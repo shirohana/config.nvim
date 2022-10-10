@@ -23,7 +23,7 @@ neotree.setup {
       ['mm'] = { 'move', config = { show_path = 'relative' } },
       ['md'] = 'delete',
       ['y'] = 'copy_to_clipboard',
-      ['x'] = 'cut_to_clipboard',
+      ['c'] = 'cut_to_clipboard',
       ['p'] = 'paste_from_clipboard',
       ['q'] = 'close_window',
       ['R'] = 'refresh',
