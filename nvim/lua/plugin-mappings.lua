@@ -172,6 +172,16 @@ if tap 'nvim-tree.lua' then
   keymap('n', 'Ú', '<Cmd>NvimTreeFindFile<CR>')
 end
 
+-- PlantumlPreviewer
+if tap 'plantuml-previewer.vim' then
+  vim.cmd [[
+    augroup HanaPlantUmlPreviewer
+      autocmd!
+      autocmd FileType plantuml nnoremap <buffer> <silent> <CR> :<Cmd>PlantumlOpen<CR>
+    augroup END
+  ]]
+end
+
 -- Telescope
 if tap 'telescope.nvim' then
   keymap('n', '<C-P>', '<Cmd>Telescope find_files<CR>')

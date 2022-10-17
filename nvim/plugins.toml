@@ -167,6 +167,7 @@ hook_add = '''
 # VisualMulti https://github.com/mg979/vim-visual-multi
 [[plugins]]
 repo = 'mg979/vim-visual-multi'
+lazy = 0
 # on_event = 'InsertEnter'
 # hook_add = "lua require 'plugins.visual-multi'"
 hook_add = """

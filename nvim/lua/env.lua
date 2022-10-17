@@ -35,6 +35,9 @@ opt.scrolloff = 2
 -- opt.nolazyredraw = true
 
 -- ======== Behavior ========
+-- Enable smartcase
+-- opt.ignorecase = true
+-- opt.smartcase = true
 -- Disable mouse
 opt.mouse = nil
 -- Allow hidden buffers
@@ -46,3 +49,16 @@ opt.errorbells = true
 -- ======== Other ========
 opt.showcmd = true
 -- let g:force_fix_easymotion_cursor = 1
+vim.cmd [[
+augroup HanaEnv
+  autocmd!
+  autocmd BufRead,BufNewFile * if !did_filetype() && getline(1) =~# '@startuml\>'| setfiletype plantuml | endif
+  autocmd BufRead,BufNewFile *.pu,*.uml,*.plantuml,*.puml,*.iuml set filetype=plantuml
+  " autocmd BufRead,BufNewFile *.json setlocal foldmethod=syntax
+  autocmd FileType plantuml set iskeyword+=$
+augroup END
+]]
+-- autocmd CursorHold *? syntax sync minlines=300
+-- autocmd BufRead,BufNewFile *.tsx setf typescriptreact
+-- autocmd FileType prisma setlocal commentstring=//\ %s
+-- autocmd FileType typescriptreact setlocal

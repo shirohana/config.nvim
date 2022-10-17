@@ -56,7 +56,12 @@ keymap('c', '<C-E>', '<End>')
 -- Create new buffer, using <Opt-t>
 keymap('n', '†', '<Cmd>enew<CR>')
 -- Save buffer
-keymap('n', '<Leader>w', '<Cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 });vim.cmd.write()<CR>')
+-- todo: https://github.com/neovim/neovim/issues/19624
+keymap(
+  'n',
+  '<Leader>w',
+  '<Cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 });vim.cmd.write()<CR>'
+)
 -- Save buffer without formatting
 keymap('n', '<Leader>W', '<Cmd>write<CR>')
 -- Reload buffer

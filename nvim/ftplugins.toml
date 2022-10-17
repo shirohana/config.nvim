@@ -1,7 +1,39 @@
 # ================================
+# Generic
+# ================================
+# OpenBrowser https://github.com/tyru/open-browser.vim
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+hook_add = '''
+  let g:openbrowser_browser_commands = [
+    \ {'name': 'open', 'args': ['{browser}', '-a', 'Safari', '{uri}'], 'background': 0}
+    \ ]
+'''
+
+# ================================
 # Lua
 # ================================
 # LuaDev https://github.com/folke/lua-dev.nvim
 [[plugins]]
 repo = 'folke/lua-dev.nvim'
 lazy = 0
+
+# ================================
+# PlantUML
+# ================================
+# PlantUmlSyntax https://github.com/aklt/plantuml-syntax
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_ft = ['uml', 'plantuml']
+# PlantUmlPreviewer https://github.com/weirongxu/plantuml-previewer.vim
+[[plugins]]
+repo = 'weirongxu/plantuml-previewer.vim'
+depends = 'open-browser.vim'
+on_cmd = ['PlantumlOpen', 'PlantumlSave']
+hook_add = '''
+  let g:plantuml_previewer#plantuml_jar_path = get(
+    \  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
+    \  1,
+    \  0
+    \)
+'''
