@@ -22,6 +22,7 @@ configs.setup {
   highlight = {
     enable = true,
     disable = {
+      'help',
       'plantuml',
       'stylus',
     },

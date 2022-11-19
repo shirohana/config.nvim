@@ -18,6 +18,8 @@ neotree.setup {
       ['x'] = 'close_node',
       ['zM'] = 'close_all_nodes',
       ['zR'] = 'expand_all_nodes',
+      ['zm'] = 'close_all_nodes',
+      ['zr'] = 'expand_all_nodes',
       ['ma'] = { 'add', config = { show_path = 'relative' } },
       ['mc'] = { 'copy', config = { show_path = 'relative' } },
       ['mm'] = { 'move', config = { show_path = 'relative' } },
@@ -32,6 +34,7 @@ neotree.setup {
     },
   },
   filesystem = {
+    bind_to_cwd = false,
     window = {
       mappings = {
         ['i'] = 'toggle_hidden',

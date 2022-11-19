@@ -38,10 +38,18 @@ repo = 'mrshmllow/document-color.nvim'
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
 
+# IndentBlankline https://github.com/lukas-reineke/indent-blankline.nvim
+[[plugins]]
+repo = 'lukas-reineke/indent-blankline.nvim'
+
 # Lualine https://github.com/nvim-lualine/lualine.nvim
 # [[plugins]]
 # repo = 'nvim-lualine/lualine.nvim'
 # hook_add = "lua require 'plugins.lualine'"
+
+# Wilder https://github.com/gelguy/wilder.nvim
+[[plugins]]
+repo = 'gelguy/wilder.nvim'
 
 # ================================
 # File Navigation
@@ -110,7 +118,7 @@ hook_add = "lua require 'plugins.auto-pairs'"
 # BetterWhitespace https://github.com/ntpeters/vim-better-whitespace
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
-# on_event = 'BufEnter'
+on_event = 'BufEnter'
 hook_add = '''
 let g:better_whitespace_operator = 0
 let g:show_spaces_that_precede_tabs = 1
@@ -265,6 +273,10 @@ repo = 'lewis6991/gitsigns.nvim'
 # Language Server
 # ================================
 
+# Fidget https://github.com/j-hui/fidget.nvim
+[[plugins]]
+repo = 'j-hui/fidget.nvim'
+
 # LspColors https://github.com/folke/lsp-colors.nvim
 [[plugins]]
 repo = 'folke/lsp-colors.nvim'
@@ -278,13 +290,26 @@ depends = ['lspkind-nvim', 'lspsaga.nvim']
 [[plugins]]
 repo = 'onsails/lspkind-nvim'
 
+# LspLines https://git.sr.ht/~whynothugo/lsp_lines.nvim
+[[plugins]]
+repo = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
+
 # LspSaga https://github.com/tami5/lspsaga.nvim
 [[plugins]]
 repo = 'tami5/lspsaga.nvim'
 
+# LspSignature https://github.com/ray-x/lsp_signature.nvim
+[[plugins]]
+repo = 'ray-x/lsp_signature.nvim'
+
 # Mason https://github.com/williamboman/mason.nvim
 [[plugins]]
 repo = 'williamboman/mason.nvim'
+
+# Navic https://github.com/SmiteshP/nvim-navic
+[[plugins]]
+repo = 'SmiteshP/nvim-navic'
+depends = ['neovim/nvim-lspconfig']
 
 # NullLs https://github.com/jose-elias-alvarez/null-ls.nvim
 [[plugins]]

@@ -141,11 +141,18 @@ if tap 'hop.nvim' then
   -- keymap('', 'ss', '<Cmd>HopPattern<CR>')
 end
 
+-- LspLines
+if tap 'lsp_lines.nvim' then
+  local lsp_lines = require 'lsp_lines'
+  keymap('n', 'zp', lsp_lines.toggle)
+end
+
 -- LspSaga
 if tap 'lspsaga.nvim' then
   keymap('n', 'd<Space>', '<Cmd>Lspsaga hover_doc<CR>')
   keymap('n', '<Space>d', '<Cmd>Lspsaga preview_definition<CR>')
-  keymap({ 'n', 'i' }, '<C-k>', '<Cmd>Lspsaga signature_help<CR>')
+  -- Use `lsp-signature` instead
+  -- keymap({ 'n', 'i' }, '<C-k>', '<Cmd>Lspsaga signature_help<CR>')
   keymap('n', 'gu', '<Cmd>Lspsaga lsp_finder<CR>')
   keymap('n', 'zi', '<Cmd>Lspsaga code_action<CR>')
   keymap('x', 'zi', '<Cmd>Lspsaga range_code_action<CR>')
@@ -154,6 +161,16 @@ if tap 'lspsaga.nvim' then
   keymap('n', 'zk', '<Cmd>Lspsaga diagnostic_jump_prev<CR>')
   -- Rename symbols, using <Opt-r>
   keymap('n', '®', '<Cmd>Lspsaga rename<CR>')
+end
+
+-- MarkdownPreview
+if tap 'vim-markdown-preview' then
+  vim.cmd [[
+    augroup HanaMarkdownPreview
+      autocmd!
+      autocmd FileType markdown nnoremap <buffer> <silent> <CR> :<C-u>call Vim_Markdown_Preview_Local()<CR>
+    augroup END
+  ]]
 end
 
 -- NeoTree

@@ -1,5 +1,6 @@
 local lspconfig = require 'lspconfig'
 local dcolor = require 'document-color'
+local navic = require 'nvim-navic'
 
 local api = vim.api
 local lsp = vim.lsp
@@ -9,6 +10,11 @@ local on_attach = function(client, bufnr)
   if client.server_capabilities.colorProvider then
     dcolor.buf_attach(bufnr)
     -- dcolor.buf_toggle()
+  end
+
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+    vim.opt.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
   end
 
   local function bkeymap(mode, lhs, rhs)

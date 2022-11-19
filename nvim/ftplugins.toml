@@ -19,6 +19,19 @@ repo = 'folke/lua-dev.nvim'
 lazy = 0
 
 # ================================
+# Markdown
+# ================================
+# https://github.com/JamshedVesuna/vim-markdown-preview
+[[plugins]]
+repo = 'JamshedVesuna/vim-markdown-preview'
+on_ft = 'markdown'
+hook_add = '''
+  let g:vim_markdown_preview_toggle = -1
+  let g:vim_markdown_preview_github = 1
+  let g:vim_markdown_preview_browser = 'Safari'
+'''
+
+# ================================
 # PlantUML
 # ================================
 # PlantUmlSyntax https://github.com/aklt/plantuml-syntax

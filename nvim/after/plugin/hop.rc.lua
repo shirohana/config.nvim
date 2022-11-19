@@ -3,4 +3,4 @@ if not exists then
   return
 end
 
-hop.setup()
+hop.setup {}
