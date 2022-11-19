@@ -47,9 +47,9 @@ repo = 'lukas-reineke/indent-blankline.nvim'
 # repo = 'nvim-lualine/lualine.nvim'
 # hook_add = "lua require 'plugins.lualine'"
 
-# Wilder https://github.com/gelguy/wilder.nvim
+# # Scrollbar https://github.com/petertriho/nvim-scrollbar
 [[plugins]]
-repo = 'gelguy/wilder.nvim'
+repo = 'petertriho/nvim-scrollbar'
 
 # ================================
 # File Navigation
@@ -100,6 +100,10 @@ lazy = 1
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 hook_add = "lua require 'plugins.easymotion'"
+
+# Hlslens https://github.com/kevinhwang91/nvim-hlslens
+[[plugins]]
+repo = 'kevinhwang91/nvim-hlslens'
 
 # Hop https://github.com/phaazon/hop.nvim
 [[plugins]]
@@ -175,9 +179,6 @@ hook_add = '''
 # VisualMulti https://github.com/mg979/vim-visual-multi
 [[plugins]]
 repo = 'mg979/vim-visual-multi'
-lazy = 0
-# on_event = 'InsertEnter'
-# hook_add = "lua require 'plugins.visual-multi'"
 hook_add = """
 let g:VM_default_mappings = 0
 let g:VM_maps = {}
@@ -356,6 +357,11 @@ repo = 'L3MON4D3/LuaSnip'
 # Utility
 # ================================
 
+# Notify https://github.com/rcarriga/nvim-notify
+[[plugins]]
+repo = 'rcarriga/nvim-notify'
+lazy =1
+
 # Nui https://github.com/MunifTanjim/nui.nvim
 [[plugins]]
 repo = 'MunifTanjim/nui.nvim'
@@ -378,8 +384,26 @@ repo = 'simrat39/symbols-outline.nvim'
 # TreeSitter https://github.com/nvim-treesitter/nvim-treesitter
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-hook_source = 'TSUpdate'
+hook_post_update = ':TSUpdate'
+
+# TreeSitterPlayground https://github.com/nvim-treesitter/playground
+[[plugins]]
+repo = 'nvim-treesitter/playground'
+depends = ['nvim-treesitter']
+
+# TreeSitterTextobjects https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter-textobjects'
+depends = ['nvim-treesitter']
+
+# TreeSitterRainbow https://github.com/p00f/nvim-ts-rainbow
+[[plugins]]
+repo = 'p00f/nvim-ts-rainbow'
 
 # WebDevicons https://github.com/kyazdani42/nvim-web-devicons
 [[plugins]]
 repo = 'kyazdani42/nvim-web-devicons'
+
+# Wilder https://github.com/gelguy/wilder.nvim
+[[plugins]]
+repo = 'gelguy/wilder.nvim'

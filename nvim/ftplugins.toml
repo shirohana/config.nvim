@@ -13,10 +13,9 @@ hook_add = '''
 # ================================
 # Lua
 # ================================
-# LuaDev https://github.com/folke/lua-dev.nvim
+# LuaDev https://github.com/folke/neodev.nvim
 [[plugins]]
-repo = 'folke/lua-dev.nvim'
-lazy = 0
+repo = 'folke/neodev.nvim'
 
 # ================================
 # Markdown
