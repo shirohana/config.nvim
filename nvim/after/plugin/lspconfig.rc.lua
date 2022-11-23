@@ -77,7 +77,12 @@ lspconfig.tailwindcss.setup {
 
 lspconfig.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { 'typescript', 'typescript.tsx', 'typescriptreact' },
+  filetypes = {
+    'javascript',
+    'typescript',
+    'typescript.tsx',
+    'typescriptreact',
+  },
   cmd = { 'typescript-language-server', '--stdio' },
 }
 

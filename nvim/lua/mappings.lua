@@ -18,7 +18,8 @@ keymap({ 'i', 'n', 'v' }, '<C-L>', '<Esc>')
 keymap('n', '<Esc><Esc>', '<Cmd>nohlsearch<CR>')
 -- Highlight search on current word
 -- stylua: ignore
-keymap('n', 'zx', "<Cmd>let @/='\\<'.expand('<cword>').'\\>'<Bar>call histadd('search', @/)<Bar>set hlsearch<CR>")
+keymap('n', 'zx',
+  "<Cmd>let @/='\\<'.expand('<cword>').'\\>'<Bar>call histadd('search', @/)<Bar>set hlsearch<Bar>lua require('hlslens').start()<CR>")
 
 -- ======== Moving ========
 -- Move screen horizontally
@@ -133,3 +134,9 @@ keymap('n', '§', '<Cmd>6tabn<CR>')
 keymap('n', '¶', '<Cmd>7tabn<CR>')
 keymap('n', '•', '<Cmd>8tabn<CR>')
 keymap('n', 'ª', '<Cmd>9tabn<CR>')
+
+-- ======== Terminal ========
+-- Enter -- NORMAL --
+keymap('t', '<C-k>', '<C-\\><C-n>')
+-- Clear Scrollback
+-- autocmd MyAutoCmd TermOpen * nnoremap <buffer> <silent> <C-k> :<C-u>ClearScrollback<CR>

@@ -39,7 +39,7 @@ configs.setup {
     enable = true,
   },
   rainbow = {
-    enable = false,
+    enable = true,
   },
   textobjects = {
     select = {
