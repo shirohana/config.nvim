@@ -384,7 +384,7 @@ repo = 'simrat39/symbols-outline.nvim'
 # TreeSitter https://github.com/nvim-treesitter/nvim-treesitter
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-hook_post_update = ':TSUpdate'
+hook_post_update = 'TSUpdate'
 
 # TreeSitterContext https://github.com/nvim-treesitter/nvim-treesitter-context
 [[plugins]]

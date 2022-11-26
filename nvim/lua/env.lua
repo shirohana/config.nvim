@@ -3,6 +3,7 @@ local opt = vim.opt
 
 -- g.loaded = 1
 -- g.loaded_netrwPlugin = 1
+g.loaded_perl_provider = 0
 
 -- ======== Global MapLeader ========
 -- Primary leader `<Space>` used in global mappings, e.g.:
