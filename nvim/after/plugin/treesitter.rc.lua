@@ -55,6 +55,11 @@ configs.setup {
         ['af'] = '@function.outer',
         ['if'] = '@function.inner',
       },
+      selection_modes = {
+        ['@block.outer'] = 'V',
+        ['@conditional.outer'] = 'V',
+        ['@function.outer'] = 'V',
+      },
     },
     move = {
       enable = true,
