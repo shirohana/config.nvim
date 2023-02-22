@@ -76,10 +76,10 @@ if tap 'vim-easymotion' then
   --   keymap('o', 't', '<Plug>(easymotion-tl-fix)')
   --   keymap('o', 'T', '<Plug>(easymotion-Tl-fix)')
   -- else
-  keymap('o', 'f', '<Plug>(easymotion-fl)')
-  keymap('o', 'F', '<Plug>(easymotion-Fl)')
-  keymap('o', 't', '<Plug>(easymotion-tl)')
-  keymap('o', 'T', '<Plug>(easymotion-Tl)')
+  -- keymap('o', 'f', '<Plug>(easymotion-fl)')
+  -- keymap('o', 'F', '<Plug>(easymotion-Fl)')
+  -- keymap('o', 't', '<Plug>(easymotion-tl)')
+  -- keymap('o', 'T', '<Plug>(easymotion-Tl)')
   -- end
 end
 
@@ -215,7 +215,7 @@ end
 
 -- SymbolsOutline
 if tap 'symbols-outline.nvim' then
-  keymap('n', 'K', '<Cmd>SymbolsOutline<CR>')
+  -- keymap('n', 'K', '<Cmd>SymbolsOutline<CR>')
 end
 
 -- Trouble

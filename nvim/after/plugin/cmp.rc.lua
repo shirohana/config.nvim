@@ -2,6 +2,20 @@ local cmp = require 'cmp'
 local lspkind = require 'lspkind'
 local luasnip = require 'luasnip'
 
+local function get_document_color(entry, vim_item)
+  if vim_item.kind == 'Color' and entry.completion_item.documentation then
+    local _, _, r, g, b = string.find(
+      entry.completion_item.documentation,
+      '^rgb%((%d+), (%d+), (%d+)'
+    )
+    if r then
+      return string.format('%02x', r)
+        .. string.format('%02x', g)
+        .. string.format('%02x', b)
+    end
+  end
+end
+
 cmp.setup {
   view = {
     entries = { name = 'custom', selection_order = 'near_cursor' },
@@ -37,17 +51,26 @@ cmp.setup {
     },
   },
   formatting = {
-    -- format = lspkind.cmp_format { mode = 'symbol_text', maxwidth = 50 },
     fields = { 'kind', 'abbr', 'menu' },
     format = function(entry, vim_item)
-      local kind = lspkind.cmp_format { mode = 'symbol_text', maxwidth = 50 }(
-        entry,
-        vim_item
-      )
-      local strings = vim.split(kind.kind, '%s', { trimempty = true })
-      kind.kind = ' ' .. strings[1] .. ' '
-      kind.menu = '  (' .. strings[2] .. ')'
-      return kind
+      local symbol_kind = vim_item.kind
+      local symbol_icon = lspkind.symbolic(vim_item.kind)
+      local color = get_document_color(entry, vim_item)
+
+      if color then
+        symbol_icon = ' '
+        local hl_group = 'Tw_' .. color
+        if vim.fn.hlID(hl_group) < 1 then
+          vim.api.nvim_set_hl(0, hl_group, { bg = '#' .. color })
+        end
+        vim_item.kind_hl_group = hl_group
+      end
+
+      vim_item.kind = ' ' .. symbol_icon .. ' '
+      vim_item.menu = '  (' .. symbol_kind .. ')'
+      vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
+
+      return vim_item
     end,
     menu = {
       buffer = '‹Buffer›',
