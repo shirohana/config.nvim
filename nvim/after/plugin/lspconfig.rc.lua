@@ -17,6 +17,11 @@ local on_attach = function(client, bufnr)
     vim.opt.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
   end
 
+  -- when filetype is TypeScript, attach twoslash queries
+  if client.name == 'tsserver' then
+    require('twoslash-queries').attach(client, bufnr)
+  end
+
   local function bkeymap(mode, lhs, rhs)
     keymap(mode, lhs, rhs, { buffer = bufnr })
   end
@@ -27,7 +32,7 @@ local on_attach = function(client, bufnr)
   -- bkeymap('n', 'd<Space>', '<Cmd>lua vim.lsp.buf.hover()<CR>')
   -- bkeymap('i', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
   bkeymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
-  -- bkeymap('n', 'gu', '<Cmd>lua vim.lsp.buf.references()<CR>')
+  bkeymap('n', 'gu', '<Cmd>lua vim.lsp.buf.references()<CR>')
   bkeymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
   bkeymap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
   -- bkeymap('n', 'zj', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
@@ -51,7 +56,7 @@ capabilities.textDocument.colorProvider = {
 
 lspconfig.prismals.setup {}
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   on_attach = on_attach,
   settings = {
     Lua = {

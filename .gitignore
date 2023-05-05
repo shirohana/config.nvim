@@ -1,0 +1,7 @@
+.DS_Store
+.netrwhist
+.node-version
+.swp$
+__pycache__/
+vim-markdown-preview.html
+~$

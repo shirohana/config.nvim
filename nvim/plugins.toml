@@ -108,6 +108,7 @@ repo = 'kevinhwang91/nvim-hlslens'
 # Hop https://github.com/phaazon/hop.nvim
 [[plugins]]
 repo = 'phaazon/hop.nvim'
+rev = 'caaccee'
 
 # ================================
 # Editing
@@ -322,6 +323,10 @@ depends = ['plenary.nvim']
 repo = 'folke/trouble.nvim'
 depends = ['nvim-web-devicons']
 
+# TwoslashQueries https://github.com/folke/trouble.nvim
+[[plugins]]
+repo = 'marilari88/twoslash-queries.nvim'
+
 # ================================
 # Completion
 # ================================
@@ -352,6 +357,10 @@ repo = 'ray-x/cmp-treesitter'
 [[plugins]]
 repo = 'quangnguyen30192/cmp-nvim-ultisnips'
 depends = ['ultisnips']
+
+# Copilot https://github.com/github/copilot.vim
+[[plugins]]
+repo = 'github/copilot.vim'
 
 # LuaSnip https://github.com/L3MON4D3/LuaSnip
 [[plugins]]
@@ -393,6 +402,11 @@ hook_post_update = 'TSUpdate'
 # TreeSitterContext https://github.com/nvim-treesitter/nvim-treesitter-context
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter-context'
+depends = ['nvim-treesitter']
+
+# TreesitterIndentObject https://github.com/kiyoon/treesitter-indent-object.nvim
+[[plugins]]
+repo = 'kiyoon/treesitter-indent-object.nvim'
 depends = ['nvim-treesitter']
 
 # TreeSitterPlayground https://github.com/nvim-treesitter/playground

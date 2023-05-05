@@ -63,3 +63,15 @@ augroup END
 -- autocmd BufRead,BufNewFile *.tsx setf typescriptreact
 -- autocmd FileType prisma setlocal commentstring=//\ %s
 -- autocmd FileType typescriptreact setlocal
+
+local orig_tempname = vim.fn.tempname
+
+-- create system tmp file path under /var/folders when folder not exists
+vim.fn.tempname = function()
+  local tmp = orig_tempname()
+  local dir = vim.fn.fnamemodify(tmp, ':h')
+  if not vim.loop.fs_stat(dir) then
+    vim.fn.mkdir(dir, 'p', 493) -- 493 = 0755
+  end
+  return tmp
+end

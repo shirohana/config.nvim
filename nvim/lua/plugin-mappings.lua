@@ -85,6 +85,8 @@ end
 
 -- Fugitive
 if tap 'vim-fugitive' then
+  -- Git status, using <Opt-g>
+  keymap('n', '©', '<Cmd>Git<CR>')
   keymap('n', 'gb', '<Cmd>Git blame<CR>')
 end
 
@@ -95,7 +97,11 @@ if tap 'fzf.vim' then
       nnoremap <silent> <C-O> :<Cmd>Buffers<CR>
     endif
   ]]
-  keymap('n', '<C-P>', '<Cmd>Files<CR>')
+  keymap('n', '<C-p>', function()
+    -- call vim.fn.tempname() to ensure that the file is created
+    vim.fn.tempname()
+    vim.cmd 'Files'
+  end)
   -- Search text, using <Opt-f>
   keymap('n', 'ƒ', ':<C-u>Ag<Space>')
 end
@@ -141,6 +147,13 @@ if tap 'hop.nvim' then
   -- keymap('', 'ss', '<Cmd>HopPattern<CR>')
 end
 
+-- IncsearchFuzzy
+if tap 'incsearch-fuzzy.vim' then
+  keymap('n', 'z/', '<Plug>(incsearch-fuzzy-/)')
+  keymap('n', 'z?', '<Plug>(incsearch-fuzzy-?)')
+  keymap('n', 'zg/', '<Plug>(incsearch-fuzzy-stay)')
+end
+
 -- LspLines
 if tap 'lsp_lines.nvim' then
   local lsp_lines = require 'lsp_lines'
@@ -152,8 +165,8 @@ if tap 'lspsaga.nvim' then
   keymap('n', 'd<Space>', '<Cmd>Lspsaga hover_doc<CR>')
   keymap('n', '<Space>d', '<Cmd>Lspsaga preview_definition<CR>')
   -- Use `lsp-signature` instead
-  -- keymap({ 'n', 'i' }, '<C-k>', '<Cmd>Lspsaga signature_help<CR>')
-  keymap('n', 'gu', '<Cmd>Lspsaga lsp_finder<CR>')
+  keymap({ 'n', 'i' }, '<C-k>', '<Cmd>Lspsaga signature_help<CR>')
+  -- keymap('n', 'gu', '<Cmd>Lspsaga lsp_finder<CR>')
   keymap('n', 'zi', '<Cmd>Lspsaga code_action<CR>')
   keymap('x', 'zi', '<Cmd>Lspsaga range_code_action<CR>')
   keymap('n', 'zo', '<Cmd>Lspsaga show_line_diagnostics<CR>')
@@ -223,7 +236,30 @@ if tap 'trouble.nvim' then
   keymap('n', '<LocalLeader>z<Space>', '<Cmd>TroubleToggle<CR>')
 end
 
+-- TreeSitterIndentObject
+if tap 'trouble.nvim' then
+  local ts_io = require 'treesitter_indent_object.textobj'
+  -- select context-aware indent
+  keymap({ 'x', 'o' }, 'ai', function()
+    ts_io.select_indent_outer()
+  end)
+  -- ensure selecting entire line (like caI)
+  keymap({ 'x', 'o' }, 'aI', function()
+    ts_io.select_indent_outer(true)
+  end)
+  -- select inner block (only if block, only else block, etc.)
+  keymap({ 'x', 'o' }, 'ii', ts_io.select_indent_inner)
+  -- select entire inner range (including if, else, etc.)
+  keymap({ 'x', 'o' }, 'oi', function()
+    ts_io.select_indent_inner(true)
+  end)
+end
+
 -- Undotree
 if tap 'undotree' then
-  keymap('n', 'U', '<Cmd>UndotreeToggle<Bar>wincmd p<CR>')
+  keymap('n', 'U', function()
+    -- call vim.fn.tempname() to ensure that the file is created
+    vim.fn.tempname()
+    vim.cmd 'UndotreeToggle | wincmd p'
+  end)
 end
