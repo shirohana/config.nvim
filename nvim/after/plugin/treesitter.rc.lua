@@ -10,7 +10,6 @@ parser_config.tsx.filetype_to_parsername = {
 
 configs.setup {
   ensure_installed = {
-    'help',
     'json',
     'lua',
     'markdown',

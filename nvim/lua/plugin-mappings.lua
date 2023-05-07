@@ -97,11 +97,7 @@ if tap 'fzf.vim' then
       nnoremap <silent> <C-O> :<Cmd>Buffers<CR>
     endif
   ]]
-  keymap('n', '<C-p>', function()
-    -- call vim.fn.tempname() to ensure that the file is created
-    vim.fn.tempname()
-    vim.cmd 'Files'
-  end)
+  keymap('n', '<C-p>', '<Cmd>Files<CR>')
   -- Search text, using <Opt-f>
   keymap('n', 'ƒ', ':<C-u>Ag<Space>')
 end
