@@ -59,7 +59,7 @@ if tap 'vim-easymotion' then
   keymap('', '<LocalLeader>N', '<Plug>(easymotion-N)')
   keymap('', '<LocalLeader><Space>', '<Plug>(easymotion-repeat)')
   -- Word searching
-  -- keymap('n', 'ss', '<Plug>(easymotion-sn)')
+  keymap('n', 'ss', '<Plug>(easymotion-sn)')
   keymap('n', 'sf', '<Plug>(easymotion-fl)')
   keymap('n', 'sF', '<Plug>(easymotion-Fl)')
   keymap('n', 'st', '<Plug>(easymotion-tl)')
@@ -97,7 +97,11 @@ if tap 'fzf.vim' then
       nnoremap <silent> <C-O> :<Cmd>Buffers<CR>
     endif
   ]]
-  keymap('n', '<C-p>', '<Cmd>Files<CR>')
+  keymap('n', '<C-p>', function()
+    -- call vim.fn.tempname() to ensure that the file is created
+    vim.fn.tempname()
+    vim.cmd 'Files'
+  end)
   -- Search text, using <Opt-f>
   keymap('n', 'ƒ', ':<C-u>Ag<Space>')
 end
@@ -184,10 +188,6 @@ end
 
 -- NeoTree
 if tap 'neo-tree.nvim' then
-  -- Toggle NeoTree, using <Opt-;>
-  keymap('n', '…', '<Cmd>Neotree toggle<CR>')
-  -- Find current file in NeoTree, using <Opt-Shift-;>
-  keymap('n', 'Ú', '<Cmd>Neotree reveal<CR>')
 end
 
 -- NvimTree

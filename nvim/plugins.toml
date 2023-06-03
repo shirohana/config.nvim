@@ -361,6 +361,11 @@ depends = ['ultisnips']
 # Copilot https://github.com/github/copilot.vim
 [[plugins]]
 repo = 'github/copilot.vim'
+hook_add = '''
+let g:copilot_filetypes = {
+  \ 'markdown': v:true,
+  \ }
+'''
 
 # LuaSnip https://github.com/L3MON4D3/LuaSnip
 [[plugins]]

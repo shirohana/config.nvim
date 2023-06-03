@@ -49,8 +49,6 @@ opt.errorbells = true
 
 -- ======== Other ========
 opt.showcmd = true
-g.python3_host_prog = '/usr/bin/python3'
-
 -- let g:force_fix_easymotion_cursor = 1
 vim.cmd [[
 augroup HanaEnv
@@ -66,14 +64,14 @@ augroup END
 -- autocmd FileType prisma setlocal commentstring=//\ %s
 -- autocmd FileType typescriptreact setlocal
 
-local orig_tempname = vim.fn.tempname
+-- local orig_tempname = vim.fn.tempname
 
 -- create system tmp file path under /var/folders when folder not exists
-vim.fn.tempname = function()
-  local tmp = orig_tempname()
-  local dir = vim.fn.fnamemodify(tmp, ':h')
-  if not vim.loop.fs_stat(dir) then
-    vim.fn.mkdir(dir, 'p', 493) -- 493 = 0755
-  end
-  return tmp
-end
+-- vim.fn.tempname = function()
+--   local tmp = orig_tempname()
+--   local dir = vim.fn.fnamemodify(tmp, ':h')
+--   if not vim.loop.fs_stat(dir) then
+--     vim.fn.mkdir(dir, 'p', 493) -- 493 = 0755
+--   end
+--   return tmp
+-- end
