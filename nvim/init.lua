@@ -1,11 +1,25 @@
 require 'env'
-require 'plugins'
-require 'mappings'
-require 'plugin-mappings'
+require 'keymaps'
 require 'abbrs'
 require 'theme'
 
-local NVIM_DIR = require('vars').NVIM_DIR
-local opt = vim.opt
+local LAZY_PATH = require('vars').LAZY_PATH
 
-opt.runtimepath:prepend { NVIM_DIR .. '/vim' }
+if not vim.loop.fs_stat(LAZY_PATH) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
+    LAZY_PATH,
+  }
+end
+
+vim.opt.rtp:prepend(LAZY_PATH)
+
+require('lazy').setup {
+  { import = 'plugins' },
+  { import = 'plugins.ide' },
+  { import = 'plugins.lang' },
+}

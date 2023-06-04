@@ -1,79 +1,47 @@
 local g = vim.g
 local opt = vim.opt
 
--- g.loaded = 1
--- g.loaded_netrwPlugin = 1
 g.loaded_perl_provider = 0
 
 -- ======== Global MapLeader ========
+
 -- Primary leader `<Space>` used in global mappings, e.g.:
 --   - save, close, buffer-navigating, etc.
--- Secondary leader `;` used in plugin mappings
 g.mapleader = ' '
+-- Secondary leader `;` used in plugin mappings.
 g.maplocalleader = ';'
 
 -- ======== Editor Config ========
--- Always use utf-8
-opt.encoding = 'utf-8'
+
 opt.fileencodings = 'ucs-bom,utf-8,shift_jis,default,latin1'
--- Use space
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
 
 -- ======== Appearance ========
--- Disable guicursor
-opt.guicursor = nil
--- Use ruler
+
 opt.colorcolumn = '80,120'
 opt.cursorline = true
-opt.wrap = false
--- Editor padding
+opt.guicursor = nil
 opt.scrolloff = 2
--- autocmd MyAutoCmd TermOpen * setlocal scrolloff=0
--- Rendering
--- opt.nolazyredraw = true
+opt.wrap = false
 
 -- ======== Behavior ========
--- Enable smartcase
--- opt.ignorecase = true
--- opt.smartcase = true
--- Disable mouse
+
 opt.mouse = nil
--- Allow hidden buffers
 opt.hidden = true
--- Enable error bells
 opt.belloff = nil
 opt.errorbells = true
 
 -- ======== Other ========
-opt.showcmd = true
-g.python3_host_prog = '/usr/bin/python3'
 
--- let g:force_fix_easymotion_cursor = 1
 vim.cmd [[
 augroup HanaEnv
   autocmd!
+  autocmd TermOpen * setlocal scrolloff=0
+  autocmd FileType plantuml set iskeyword+=$
   autocmd BufRead,BufNewFile * if !did_filetype() && getline(1) =~# '@startuml\>'| setfiletype plantuml | endif
   autocmd BufRead,BufNewFile *.pu,*.uml,*.plantuml,*.puml,*.iuml set filetype=plantuml
-  " autocmd BufRead,BufNewFile *.json setlocal foldmethod=syntax
-  autocmd FileType plantuml set iskeyword+=$
 augroup END
 ]]
--- autocmd CursorHold *? syntax sync minlines=300
--- autocmd BufRead,BufNewFile *.tsx setf typescriptreact
--- autocmd FileType prisma setlocal commentstring=//\ %s
--- autocmd FileType typescriptreact setlocal
-
-local orig_tempname = vim.fn.tempname
-
--- create system tmp file path under /var/folders when folder not exists
-vim.fn.tempname = function()
-  local tmp = orig_tempname()
-  local dir = vim.fn.fnamemodify(tmp, ':h')
-  if not vim.loop.fs_stat(dir) then
-    vim.fn.mkdir(dir, 'p', 493) -- 493 = 0755
-  end
-  return tmp
-end
