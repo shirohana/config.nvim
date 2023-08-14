@@ -108,6 +108,14 @@ local Scrollbar = {
   },
 }
 
+-- local Kanagawa = {
+--   'rebelot/kanagawa.nvim',
+--   config = true,
+--   init = function()
+--     vim.cmd 'colorscheme kanagawa'
+--   end,
+-- }
+
 ---@type LazyPluginSpec
 return {
   Hlslens,

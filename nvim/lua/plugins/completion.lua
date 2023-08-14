@@ -66,6 +66,7 @@ local Cmp = {
     Plugins.LspConfig,
     Plugins.LspKind,
     Plugins.LuaSnip,
+    Plugins.UltiSnips,
   },
   init = function()
     for name, opts in pairs(CmpTheme) do
@@ -95,10 +96,10 @@ local Cmp = {
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'treesitter' },
+        -- { name = 'treesitter' },
         { name = 'ultisnips' },
       }, {
-        { name = 'buffer' },
+        -- { name = 'buffer' },
       }),
       mapping = {
         ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -144,4 +145,13 @@ local Cmp = {
   end,
 }
 
-return { Cmp }
+---@type LazyPluginSpec
+local UltiSnips = {
+  Plugins.UltiSnips,
+  init = function()
+    vim.g.UltiSnipsSnippetDirectories = { 'UltiSnips' }
+    vim.g.UltiSnipsEnableSnipMate = 0
+  end,
+}
+
+return { Cmp, UltiSnips }

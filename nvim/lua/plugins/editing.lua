@@ -43,7 +43,7 @@ local Commentary = {
   Plugins.Commentary,
   event = 'BufEnter',
   keys = {
-    { 'gc',  '<Plug>Commentary',                mode = { 'n', 'o', 'v' } },
+    { 'gc', '<Plug>Commentary', mode = { 'n', 'o', 'v' } },
     { 'gcc', '<Plug>CommentaryLine' },
     { 'cgc', '<Plug>ChangeCommentary' },
     { 'gcu', '<Plug>Commentary<Plug>Commentary' },
@@ -53,6 +53,12 @@ local Commentary = {
     vim.g.commentary_motion_mapping = '<C-_>'
     vim.g.commentary_nesting = 1
     vim.g.commentary_use_keymap = 0
+    vim.cmd [[
+    augroup HanaEnvCommentary
+      autocmd!
+      autocmd FileType dart setlocal commentstring=//\ %s
+    augroup END
+    ]]
   end,
 }
 
@@ -67,6 +73,45 @@ local EasyAlign = {
 }
 
 ---@type LazyPluginSpec
+local Flash = {
+  Plugins.Flash,
+  event = 'VeryLazy',
+  ---@typeFlash Flash.Config
+  opts = {
+    search = {
+      -- mode = 'search',
+      -- incremental = true,
+      multi_window = false,
+    },
+    jump = {
+      history = true,
+      jumplist = true,
+      -- inclusive = true,
+    },
+    modes = {
+      search = { enabled = false },
+      char = { enabled = false },
+    },
+  },
+  keys = {
+    {
+      'ss',
+      mode = { 'n' },
+      function()
+        require('flash').jump {
+          search = {
+            mode = function(pattern)
+              return ([[\c%s]]):format(pattern), ([[\v%s]]):format(pattern)
+            end,
+          },
+        }
+      end,
+      desc = 'Flash',
+    },
+  },
+}
+
+---@type LazyPluginSpec
 local Hop = {
   Plugins.Hop,
   commit = 'caaccee',
@@ -77,6 +122,12 @@ local Hop = {
     { '<LocalLeader>w', '<Cmd>HopWordAC<CR>', { mode = '' } },
     { '<LocalLeader>b', '<Cmd>HopWordBC<CR>', { mode = '' } },
   },
+}
+
+---@type LazyPluginSpec
+local Spectre = {
+  Plugins.Spectre,
+  config = true,
 }
 
 ---@type LazyPluginSpec
@@ -163,11 +214,13 @@ local VisualMulti = {
 }
 
 return {
+  -- Flash,
   AutoPairs,
   BetterWhitespace,
   Commentary,
   EasyAlign,
   Hop,
+  Spectre,
   Surround,
   Undotree,
   VisualMulti,

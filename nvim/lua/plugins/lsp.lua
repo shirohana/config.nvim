@@ -49,6 +49,7 @@ local DocumentColor = {
 ---@type LazyPluginSpec
 local Fidget = {
   Plugins.Fidget,
+  tag = 'legacy',
   opts = { text = { spinner = 'dots' } },
 }
 
@@ -75,7 +76,7 @@ local LspSaga = {
     },
     -- keymap('n', 'gu', '<Cmd>Lspsaga lsp_finder<CR>')
     { 'zi', '<Cmd>Lspsaga code_action<CR>' },
-    { 'zi', '<Cmd>Lspsaga range_code_action<CR>', { mode = 'x' } },
+    -- { 'zi', '<Cmd>Lspsaga range_code_action<CR>',    { mode = 'x' } },
     { 'zo', '<Cmd>Lspsaga show_line_diagnostics<CR>' },
     { 'zj', '<Cmd>Lspsaga diagnostic_jump_next<CR>' },
     { 'zk', '<Cmd>Lspsaga diagnostic_jump_prev<CR>' },
@@ -144,6 +145,7 @@ local LspConfig = {
     --   severity_sort = true,
     -- },
     servers = {
+      dartls = {},
       lua_ls = {
         settings = {
           Lua = {
@@ -175,13 +177,13 @@ local LspConfig = {
   init = function()
     vim.lsp.set_log_level 'warn'
     vim.lsp.handlers['textDocument/publishDiagnostics'] =
-      vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        underline = true,
-        virtual_text = {
-          spacing = 4,
-          prefix = '',
-        },
-      })
+        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+          underline = true,
+          virtual_text = {
+            spacing = 4,
+            prefix = '',
+          },
+        })
   end,
 
   config = function(_, opts)
@@ -243,8 +245,8 @@ local LspConfig = {
         capabilities = capabilities,
       }, opts.servers[server_name] or {})
       if
-        opts.setups[server_name]
-        and opts.setups[server_name](server_name, server_opts)
+          opts.setups[server_name]
+          and opts.setups[server_name](server_name, server_opts)
       then
         return
       end
@@ -282,6 +284,11 @@ local Navic = {
     end
   end,
 }
+
+---@type LazyPluginSpec
+-- local LspLines = {
+--   Plugins.LspLines,
+-- }
 
 return {
   DocumentColor,

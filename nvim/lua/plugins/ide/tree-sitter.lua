@@ -6,9 +6,8 @@ local TreeSitter = {
   build = ':TSUpdate',
   event = { 'BufNewFile', 'BufReadPost' },
   dependencies = {
-    Plugins.TreeSitterContext,
     Plugins.TreeSitterIndentObject,
-    Plugins.TreeSitterRainbow,
+    -- Plugins.TreeSitterRainbow,
     Plugins.TreeSitterTextobjects,
   },
   ---@type TSConfig
@@ -32,7 +31,7 @@ local TreeSitter = {
     },
     indent = { enable = true, disable = {} },
     playground = { enable = true },
-    rainbow = { enable = true },
+    -- rainbow = { enable = true },
     textobjects = {
       select = {
         enable = true,
@@ -74,4 +73,11 @@ local TreeSitter = {
   end,
 }
 
-return { TreeSitter }
+---@type LazyPluginSpec
+local TreeSitterContext = {
+  Plugins.TreeSitterContext,
+  dependencies = { Plugins.TreeSitter },
+  config = true,
+}
+
+return { TreeSitter, TreeSitterContext }

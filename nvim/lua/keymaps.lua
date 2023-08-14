@@ -136,6 +136,16 @@ keymap('n', '¶', '<Cmd>7tabn<CR>')
 keymap('n', '•', '<Cmd>8tabn<CR>')
 keymap('n', 'ª', '<Cmd>9tabn<CR>')
 
+-- ======== Quickfix ========
+vim.cmd [[
+augroup HanaQuickFix
+  autocmd!
+  " execute :colder with `<` & `>`
+  autocmd FileType qf nnoremap <buffer> < <Cmd>colder<CR>
+  autocmd FileType qf nnoremap <buffer> > <Cmd>cnewer<CR>
+augroup END
+]]
+
 -- ======== Terminal ========
 -- Enter -- NORMAL --
 keymap('t', '<C-k>', '<C-\\><C-n>')

@@ -1,0 +1,55 @@
+global !p
+endglobal
+
+snippet ;fc "Functional Component" b
+import { c } from '~utils/react'
+
+interface $1Props {
+  className?: string
+}
+
+const ${1:Component}: React.FC<$1Props> = props => {
+  return (
+    <div className={c('${2}', props.className)}>
+			${0:$1}
+    </div>
+  )
+}
+
+export default $1
+endsnippet
+
+# snippet ;page "Functional Page Component" b
+# import { GetStaticProps } from 'next'
+# import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+# import Head from 'next/head'
+# import { useTranslation } from 'react-i18next'
+# import { NextPageWithLayout } from '~types/next'
+
+# export const getStaticProps: GetStaticProps = async ({ locale }) => {
+#   return {
+#     props: {
+#       ...(locale ? await serverSideTranslations(locale, ['app']) : null),
+#     },
+#   }
+# }
+
+# const ${1:Home}: NextPageWithLayout = () => {
+#   const { t } = useTranslation('app')
+
+#   return (
+# 		<>
+# 			<Head>
+# 				<title>{t('${2:/}.title', '$2 | PotatoMedia')}</title>
+# 				<meta name="description" content={t('$2.description')} />
+# 			</Head>
+# 			${0:<div />}
+# 		</>
+#   )
+# }
+
+# $1.displayName = '~pages$2'
+# $1.getLayout = ${4:v => v}
+
+# export default $1
+# endsnippet

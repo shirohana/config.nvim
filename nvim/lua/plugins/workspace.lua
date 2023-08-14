@@ -10,7 +10,7 @@ local CtrlSpace = {
     -- Buffer navigating
     -- nnoremap <silent> <C-o> :<C-u>CtrlSpaceBuffers<CR>
     -- Create new workspace, using <Opt-Shift-w>
-    { '„', '<Cmd>CtrlSpaceNewWorkspace<CR>' },
+    -- { '„', '<Cmd>CtrlSpaceNewWorkspace<CR>' },
     -- Load Workspace, using <Opt-w>
     { '∑', '<Cmd>LoadWorkspace<CR>' },
     -- Save workspace, using <Opt-s>
@@ -27,8 +27,10 @@ local CtrlSpace = {
     vim.g.CtrlSpaceCacheDir = require('vars').CACHE_DIR
     -- We'll only used to search buffers, keep it lower
     vim.g.CtrlSpaceSearchTiming = 20
+  end,
+  config = function()
     -- Initialize workspace manually for custom workspace selector
-    -- vim.fn['ctrlspace#workspaces#SetWorkspaceNames']()
+    vim.fn['ctrlspace#workspaces#SetWorkspaceNames']()
   end,
 }
 
@@ -52,7 +54,7 @@ local NeoTree = {
   opts = {
     use_default_mappings = false,
     window = {
-      width = 32,
+      width = 46,
       mappings = {
         ['?'] = 'show_help',
         ['o'] = 'open',

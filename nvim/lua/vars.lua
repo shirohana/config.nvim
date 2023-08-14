@@ -34,6 +34,8 @@ M.Plugins = {
   EasyAlign = 'junegunn/vim-easy-align',
   -- Fidget https://github.com/j-hui/fidget.nvim
   Fidget = 'j-hui/fidget.nvim',
+  -- Flash https://github.com/folke/flash.nvim
+  Flash = 'folke/flash.nvim',
   -- Fugitive https://github.com/tpope/vim-fugitive
   Fugitive = 'tpope/vim-fugitive',
   -- Fzf https://github.com/junegunn/fzf.vim
@@ -52,6 +54,8 @@ M.Plugins = {
   LspConfig = 'neovim/nvim-lspconfig',
   -- LspKind https://github.com/onsails/lspkind-nvim
   LspKind = 'onsails/lspkind-nvim',
+  -- LspLines https://git.sr.ht/~whynothugo/lsp_lines.nvim
+  LspLines = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
   -- LspSaga https://github.com/tami5/lspsaga.nvim
   LspSaga = 'tami5/lspsaga.nvim',
   -- LuaDev https://github.com/folke/neodev.nvim
@@ -82,6 +86,8 @@ M.Plugins = {
   Repeat = 'tpope/vim-repeat',
   -- Scrollbar https://github.com/petertriho/nvim-scrollbar
   Scrollbar = 'petertriho/nvim-scrollbar',
+  -- Spectre https://github.com/nvim-pack/nvim-spectre
+  Spectre = 'nvim-pack/nvim-spectre',
   -- Surround https://github.com/kylechui/nvim-surround
   Surround = 'kylechui/nvim-surround',
   -- TreeSitter https://github.com/nvim-treesitter/nvim-treesitter
@@ -94,6 +100,8 @@ M.Plugins = {
   TreeSitterRainbow = 'HiPhish/nvim-ts-rainbow2',
   -- TreeSitterTextobjects https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   TreeSitterTextobjects = 'nvim-treesitter/nvim-treesitter-textobjects',
+  -- UltiSnips https://github.com/SirVer/ultisnips
+  UltiSnips = 'SirVer/ultisnips',
   -- Undotree https://github.com/mbbill/undotree
   Undotree = 'mbbill/undotree',
   -- VisualMulti https://github.com/mg979/vim-visual-multi

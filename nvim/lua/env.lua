@@ -41,6 +41,7 @@ augroup HanaEnv
   autocmd!
   autocmd TermOpen * setlocal scrolloff=0
   autocmd FileType plantuml set iskeyword+=$
+  autocmd BufRead,BufNewFile *.env.* set filetype=sh
   autocmd BufRead,BufNewFile * if !did_filetype() && getline(1) =~# '@startuml\>'| setfiletype plantuml | endif
   autocmd BufRead,BufNewFile *.pu,*.uml,*.plantuml,*.puml,*.iuml set filetype=plantuml
 augroup END
