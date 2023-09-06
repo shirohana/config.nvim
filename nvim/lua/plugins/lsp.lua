@@ -170,6 +170,11 @@ local LspConfig = {
           'typescriptreact',
         },
       },
+
+      pyright = {
+        cmd = { 'pyright-langserver', '--stdio' },
+        filetypes = { 'python' },
+      },
     },
     setups = {},
   },
@@ -290,6 +295,12 @@ local Navic = {
 --   Plugins.LspLines,
 -- }
 
+---@type LazyPluginSpec
+local Trouble = {
+  Plugins.Trouble,
+  dependencies = { Plugins.WebDevicons },
+}
+
 return {
   DocumentColor,
   Fidget,
@@ -299,4 +310,5 @@ return {
   LuaDev,
   Mason,
   Navic,
+  Trouble,
 }

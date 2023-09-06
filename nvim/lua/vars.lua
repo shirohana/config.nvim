@@ -100,6 +100,8 @@ M.Plugins = {
   TreeSitterRainbow = 'HiPhish/nvim-ts-rainbow2',
   -- TreeSitterTextobjects https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   TreeSitterTextobjects = 'nvim-treesitter/nvim-treesitter-textobjects',
+  -- https://github.com/folke/trouble.nvim
+  Trouble = 'folke/trouble.nvim',
   -- UltiSnips https://github.com/SirVer/ultisnips
   UltiSnips = 'SirVer/ultisnips',
   -- Undotree https://github.com/mbbill/undotree

@@ -31,7 +31,8 @@ keymap('n', '<Bar>', '<C-i>')
 -- Search left/right of previous inline-jump by <Opt-,> and <Opt-.>
 keymap('n', '≤', ',')
 keymap('n', '≥', ';')
-keymap('n', 'ss', '/\\c')
+-- keymap('n', 'ss', '/\\c')
+keymap('n', 'ss', '/')
 
 -- ======== Editing ========
 -- Insert one line above in INSERT
