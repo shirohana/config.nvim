@@ -90,6 +90,8 @@ M.Plugins = {
   Spectre = 'nvim-pack/nvim-spectre',
   -- Surround https://github.com/kylechui/nvim-surround
   Surround = 'kylechui/nvim-surround',
+  -- SymbolsOutline https://github.com/simrat39/symbols-outline.nvim
+  SymbolsOutline = 'simrat39/symbols-outline.nvim',
   -- TreeSitter https://github.com/nvim-treesitter/nvim-treesitter
   TreeSitter = 'nvim-treesitter/nvim-treesitter',
   -- TreeSitterContext https://github.com/nvim-treesitter/nvim-treesitter-context
