@@ -50,6 +50,10 @@ M.Plugins = {
   Hop = 'phaazon/hop.nvim',
   -- IndentBlankline https://github.com/lukas-reineke/indent-blankline.nvim
   IndentBlankline = 'lukas-reineke/indent-blankline.nvim',
+  -- https://github.com/Quramy/vim-js-pretty-template
+  JsPrettyTemplate = 'Quramy/vim-js-pretty-template',
+  -- LlmNvim https://github.com/huggingface/llm.nvim
+  LlmNvim = 'huggingface/llm.nvim',
   -- LspConfig https://github.com/neovim/nvim-lspconfig
   LspConfig = 'neovim/nvim-lspconfig',
   -- LspKind https://github.com/onsails/lspkind-nvim
@@ -74,6 +78,8 @@ M.Plugins = {
   NeoTree = 'nvim-neo-tree/neo-tree.nvim',
   -- Nui https://github.com/MunifTanjim/nui.nvim
   Nui = 'MunifTanjim/nui.nvim',
+  -- Oil https://github.com/stevearc/oil.nvim
+  Oil = 'stevearc/oil.nvim',
   -- OpenBrowser https://github.com/tyru/open-browser.vim
   OpenBrowser = 'tyru/open-browser.vim',
   -- PlantUmlPreviewer https://github.com/weirongxu/plantuml-previewer.vim
@@ -104,6 +110,8 @@ M.Plugins = {
   TreeSitterTextobjects = 'nvim-treesitter/nvim-treesitter-textobjects',
   -- https://github.com/folke/trouble.nvim
   Trouble = 'folke/trouble.nvim',
+  -- https://github.com/marilari88/twoslash-queries.nvim
+  TwoslashQueries = 'marilari88/twoslash-queries.nvim',
   -- UltiSnips https://github.com/SirVer/ultisnips
   UltiSnips = 'SirVer/ultisnips',
   -- Undotree https://github.com/mbbill/undotree

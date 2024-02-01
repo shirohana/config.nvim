@@ -8,6 +8,8 @@ local Plugins = require('vars').Plugins
 ---@type LazyPluginSpec
 local IndentBlankline = {
   Plugins.IndentBlankline,
+  version = '2',
+  -- main = 'ibl',
   opts = {
     space_char_blankline = ' ',
     show_current_context = true,

@@ -14,6 +14,7 @@ local NullLs = {
       sources = {
         action.eslint_d,
         diag.eslint_d.with { diagnostics_format = '[eslint] #{m}\n(#{c})' },
+        formatter.blackd,
         formatter.prettierd.with {
           filetypes = { 'javascript', 'typescript', 'typescriptreact' },
         },

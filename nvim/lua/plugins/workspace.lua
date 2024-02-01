@@ -120,4 +120,10 @@ local NeoTree = {
   },
 }
 
-return { CtrlSpace, NeoTree }
+-- @todo put into fs.lua
+---@type LazyPluginSpec
+local Oil = {
+  Plugins.Oil,
+}
+
+return { CtrlSpace, NeoTree, Oil }

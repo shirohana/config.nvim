@@ -118,7 +118,8 @@ keymap('n', '<Leader>t', '<Cmd>terminal<CR>')
 -- ======== Tabpage ========
 -- Create new tab, using <Opt-Shift-t>
 keymap('n', 'ˇ', '<Cmd>tabnew<CR>')
--- Close tab, using <Opt-Shift-q>
+-- Close tab, using Q or <Opt-Shift-q>
+keymap('n', 'Q', '<Cmd>tabclose<CR>')
 keymap('n', 'Œ', '<Cmd>tabclose<CR>')
 -- Switch to next/prev tab, using <Opt-Shift-[> & <Opt-Shift-]>
 keymap('n', '’', '<Cmd>tabnext<CR>')

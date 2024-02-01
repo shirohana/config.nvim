@@ -65,7 +65,7 @@ local Cmp = {
     Plugins.CmpTreeSitter,
     Plugins.LspConfig,
     Plugins.LspKind,
-    Plugins.LuaSnip,
+    -- Plugins.LuaSnip,
     Plugins.UltiSnips,
   },
   init = function()
@@ -95,7 +95,7 @@ local Cmp = {
     cmp.setup(vim.tbl_extend('error', opts, {
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        -- { name = 'luasnip' },
         -- { name = 'treesitter' },
         { name = 'ultisnips' },
       }, {

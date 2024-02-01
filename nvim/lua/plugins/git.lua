@@ -35,12 +35,17 @@ local GitSigns = {
       keymap('n', 'sk', gs.prev_hunk)
 
       -- Stage hunk
-      keymap({ 'n', 'v' }, '<LocalLeader>ss', gs.stage_hunk)
-      -- Unstage whole file
+      keymap('n', '<LocalLeader>ss', gs.stage_hunk)
+      keymap('v', '<LocalLeader>ss', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>')
+
+      -- Unstage hunk
       keymap('n', '<LocalLeader>su', gs.reset_buffer_index)
+      keymap('v', '<LocalLeader>su', '<Cmd>lua require"gitsigns".reset_buffer_index({vim.fn.line("."), vim.fn.line("v")})<CR>')
 
       -- Hard reset hunk
       keymap('n', '<LocalLeader>sr', gs.reset_hunk)
+      keymap('v', '<LocalLeader>sr', '<Cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>')
+
       -- Hard reset whole file
       keymap('n', '<LocalLeader>sR', gs.reset_buffer)
 

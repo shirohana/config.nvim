@@ -146,6 +146,7 @@ local LspConfig = {
     -- },
     servers = {
       dartls = {},
+
       lua_ls = {
         settings = {
           Lua = {
@@ -160,7 +161,16 @@ local LspConfig = {
           },
         },
       },
+
+      pyright = {
+        cmd = { 'pyright-langserver', '--stdio' },
+        filetypes = { 'python' },
+      },
+
+      svelte = {},
+
       tailwindcss = {},
+
       tsserver = {
         cmd = { 'typescript-language-server', '--stdio' },
         filetypes = {
@@ -169,11 +179,6 @@ local LspConfig = {
           'typescript.tsx',
           'typescriptreact',
         },
-      },
-
-      pyright = {
-        cmd = { 'pyright-langserver', '--stdio' },
-        filetypes = { 'python' },
       },
     },
     setups = {},
@@ -203,9 +208,9 @@ local LspConfig = {
       end
 
       -- when filetype is TypeScript, attach twoslash queries
-      -- if client.name == 'tsserver' then
-      --   require('twoslash-queries').attach(client, bufnr)
-      -- end
+      if client.name == 'tsserver' then
+        require('twoslash-queries').attach(client, bufnr)
+      end
 
       local function bkeymap(mode, lhs, rhs)
         vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
