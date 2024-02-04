@@ -66,7 +66,17 @@ keymap(
   '<Cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 });vim.cmd.write()<CR>'
 )
 -- Save buffer without formatting
-keymap('n', '<Leader>W', '<Cmd>write<CR>')
+-- keymap('n', '<Leader>W', '<Cmd>write<CR>')
+keymap('n', '<Leader>W', function()
+  local should_toggle_strip_whitespace_on_save = vim.b.strip_whitespace_on_save
+  if should_toggle_strip_whitespace_on_save then
+    vim.cmd 'DisableStripWhitespaceOnSave'
+  end
+  vim.cmd 'write'
+  if should_toggle_strip_whitespace_on_save then
+    vim.cmd 'EnableStripWhitespaceOnSave'
+  end
+end)
 -- Reload buffer
 keymap('n', '<Leader>e', '<Cmd>edit<CR>')
 -- Wipe buffer
@@ -116,10 +126,11 @@ keymap('n', '<Leader>z', '<Cmd>ToggleZoomWindow<CR>')
 keymap('n', '<Leader>t', '<Cmd>terminal<CR>')
 
 -- ======== Tabpage ========
--- Create new tab, using <Opt-Shift-t>
+-- Create new tab, using st or <Opt-Shift-t>
+keymap('n', 'st', '<Cmd>tabnew<CR>')
 keymap('n', 'ˇ', '<Cmd>tabnew<CR>')
--- Close tab, using Q or <Opt-Shift-q>
-keymap('n', 'Q', '<Cmd>tabclose<CR>')
+-- Close tab, using sq or <Opt-Shift-q>
+keymap('n', 'sq', '<Cmd>tabclose<CR>')
 keymap('n', 'Œ', '<Cmd>tabclose<CR>')
 -- Switch to next/prev tab, using <Opt-Shift-[> & <Opt-Shift-]>
 keymap('n', '’', '<Cmd>tabnext<CR>')
