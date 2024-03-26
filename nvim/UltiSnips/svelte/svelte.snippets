@@ -1,1 +1,11 @@
-extends html
+snippet /([a-zA-Z][a-zA-Z0-9]*)'\// "<Tag ONELINE />" rA
+<`!p snip.rv = match.group(1)`$0 />
+endsnippet
+
+snippet /([a-zA-Z][a-zA-Z0-9]*)';/ "<Tag> ONELINE </Tag>" rA
+<`!p snip.rv = match.group(1)`>$0</`!p snip.rv = match.group(1)`>
+endsnippet
+
+snippet /([a-zA-Z][a-zA-Z0-9]*);;/ "<Tag> ONELINE </Tag>" rA
+<`!p snip.rv = match.group(1)`$0></`!p snip.rv = match.group(1)`>
+endsnippet

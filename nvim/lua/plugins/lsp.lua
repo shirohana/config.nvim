@@ -37,6 +37,8 @@ local NavicTheme = {
   NavicSeparator          = { fg = '#004657', bg = 'NONE' },
 }
 
+local util = require 'lspconfig.util'
+
 local Icons = require('vars').Icons
 local Plugins = require('vars').Plugins
 
@@ -176,9 +178,58 @@ local LspConfig = {
         filetypes = {
           'javascript',
           'typescript',
-          'typescript.tsx',
+          -- 'typescript.tsx',
           'typescriptreact',
+          'vue',
         },
+        -- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#vue-support
+        init_options = {
+          plugins = {
+            {
+              name = '@vue/typescript-plugin',
+              location = '/Users/shirohana/Library/pnpm/global/5/node_modules/@vue/typescript-plugin',
+              languages = { 'javascript', 'typescript', 'vue' },
+            },
+          },
+        },
+      },
+
+      volar = {
+        -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#volar
+        -- Take Over Mode
+        -- Volar (prior to 2.0.0), can serve as a language server for both Vue and TypeScript via Take Over Mode.
+        -- To enable Take Over Mode, override the default filetypes in setup{} as follows:
+        filetypes = {
+          'typescript',
+          'javascript',
+          'javascriptreact',
+          'typescriptreact',
+          'vue',
+          'json',
+        },
+        -- Overriding the default TypeScript Server used by Volar
+        -- The default config looks for TS in the local node_modules. This can lead to issues e.g. when working on a monorepo.
+        on_new_config = function(new_config, new_root_dir)
+          local function get_typescript_server_path(root_dir)
+            local global_ts =
+              '/Users/shirohana/Library/pnpm/global/5/node_modules/typescript/lib'
+            local found_ts = ''
+            local function check_dir(path)
+              found_ts =
+                util.path.join(path, 'node_modules', 'typescript', 'lib')
+              if util.path.exists(found_ts) then
+                return path
+              end
+            end
+            if util.search_ancestors(root_dir, check_dir) then
+              return found_ts
+            else
+              return global_ts
+            end
+          end
+          new_config.init_options.typescript.tsdk =
+            get_typescript_server_path(new_root_dir)
+        end,
       },
     },
     setups = {},
@@ -187,13 +238,13 @@ local LspConfig = {
   init = function()
     vim.lsp.set_log_level 'warn'
     vim.lsp.handlers['textDocument/publishDiagnostics'] =
-        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-          underline = true,
-          virtual_text = {
-            spacing = 4,
-            prefix = '',
-          },
-        })
+      vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        underline = true,
+        virtual_text = {
+          spacing = 4,
+          prefix = '',
+        },
+      })
   end,
 
   config = function(_, opts)
@@ -210,6 +261,19 @@ local LspConfig = {
       -- when filetype is TypeScript, attach twoslash queries
       if client.name == 'tsserver' then
         require('twoslash-queries').attach(client, bufnr)
+      end
+
+      if client.name == 'svelte' then
+        vim.api.nvim_create_autocmd('BufWritePost', {
+          group = vim.api.nvim_create_augroup(
+            'svelte_ondidchangetsorjsfile',
+            { clear = true }
+          ),
+          pattern = { '*.js', '*.ts' },
+          callback = function(ctx)
+            client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.match })
+          end,
+        })
       end
 
       local function bkeymap(mode, lhs, rhs)
@@ -255,8 +319,8 @@ local LspConfig = {
         capabilities = capabilities,
       }, opts.servers[server_name] or {})
       if
-          opts.setups[server_name]
-          and opts.setups[server_name](server_name, server_opts)
+        opts.setups[server_name]
+        and opts.setups[server_name](server_name, server_opts)
       then
         return
       end

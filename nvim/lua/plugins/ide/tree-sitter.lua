@@ -15,7 +15,7 @@ local TreeSitter = {
     ensure_installed = {
       'json',
       'lua',
-      'markdown',
+      -- 'markdown',
       'python',
       'query',
       'toml',

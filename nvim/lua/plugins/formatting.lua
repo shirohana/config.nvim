@@ -1,9 +1,8 @@
 local Plugins = require('vars').Plugins
 
--- NullLs https://github.com/jose-elias-alvarez/null-ls.nvim
----@type LazyPlugin
+---@type LazyPluginSpec
 local NullLs = {
-  'jose-elias-alvarez/null-ls.nvim',
+  Plugins.NullLs,
   dependencies = { Plugins.Plenary },
   config = function()
     local nls = require 'null-ls'

@@ -78,6 +78,8 @@ M.Plugins = {
   NeoTree = 'nvim-neo-tree/neo-tree.nvim',
   -- Nui https://github.com/MunifTanjim/nui.nvim
   Nui = 'MunifTanjim/nui.nvim',
+  -- NullLs https://github.com/jose-elias-alvarez/null-ls.nvim
+  NullLs = 'jose-elias-alvarez/null-ls.nvim',
   -- Oil https://github.com/stevearc/oil.nvim
   Oil = 'stevearc/oil.nvim',
   -- OpenBrowser https://github.com/tyru/open-browser.vim
