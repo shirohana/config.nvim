@@ -1,5 +1,52 @@
 local keymap = vim.keymap.set
 
+local has_local_prettier = nil
+
+local function detect_local_prettier()
+  if has_local_prettier == nil then
+    local script = [[
+      const path = require('path');
+      const root = path.parse(process.cwd()).root;
+      let cpath = process.cwd(), max = 10, meta;
+      while (cpath !== root && max --> 0) {
+        try {
+          meta = require(path.join(cpath, 'package.json'));
+          break;
+        } catch (e) {}
+        cpath = path.dirname(cpath);
+      }
+      process.stdout.write(meta && 'prettier' in (meta?.devDependencies || {}) ? 'true' : 'false');
+    ]]
+    local cmd = 'node <<EOF\n' .. script .. '\nEOF'
+    local handle = io.popen(cmd)
+    local result = nil
+    if handle then
+      result = handle:read '*a'
+      handle:close()
+    end
+    has_local_prettier = result == 'true'
+  end
+  return has_local_prettier
+end
+
+local function save_with_formatting()
+  if detect_local_prettier() then
+    vim.lsp.buf.format { timeout_ms = 5000 }
+  end
+  vim.cmd 'write'
+end
+
+local function save_without_formatting()
+  local strip_ws_enabled = vim.b.strip_whitespace_on_save
+  if strip_ws_enabled then
+    vim.cmd 'DisableStripWhitespaceOnSave'
+  end
+  vim.cmd 'write'
+  if strip_ws_enabled then
+    vim.cmd 'EnableStripWhitespaceOnSave'
+  end
+end
+
 -- ======== Defaults ========
 keymap('n', ',', '<Nop>')
 keymap('n', ';', '<Nop>')
@@ -60,23 +107,9 @@ keymap('c', '<C-E>', '<End>')
 keymap('n', '†', '<Cmd>enew<CR>')
 -- Save buffer
 -- todo: https://github.com/neovim/neovim/issues/19624
-keymap(
-  'n',
-  '<Leader>w',
-  '<Cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 });vim.cmd.write()<CR>'
-)
+keymap('n', '<Leader>w', save_with_formatting)
 -- Save buffer without formatting
--- keymap('n', '<Leader>W', '<Cmd>write<CR>')
-keymap('n', '<Leader>W', function()
-  local should_toggle_strip_whitespace_on_save = vim.b.strip_whitespace_on_save
-  if should_toggle_strip_whitespace_on_save then
-    vim.cmd 'DisableStripWhitespaceOnSave'
-  end
-  vim.cmd 'write'
-  if should_toggle_strip_whitespace_on_save then
-    vim.cmd 'EnableStripWhitespaceOnSave'
-  end
-end)
+keymap('n', '<Leader>W', save_without_formatting)
 -- Reload buffer
 keymap('n', '<Leader>e', '<Cmd>edit<CR>')
 -- Wipe buffer

@@ -15,7 +15,7 @@ local NullLs = {
         diag.eslint_d.with { diagnostics_format = '[eslint] #{m}\n(#{c})' },
         formatter.blackd,
         formatter.prettierd.with {
-          filetypes = { 'javascript', 'typescript', 'typescriptreact' },
+          -- filetypes = { 'javascript', 'typescript', 'typescriptreact' },
         },
         formatter.stylua,
       },
