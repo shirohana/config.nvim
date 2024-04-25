@@ -13,6 +13,7 @@ local TreeSitter = {
   ---@type TSConfig
   opts = {
     ensure_installed = {
+      'dockerfile',
       'json',
       'lua',
       -- 'markdown',

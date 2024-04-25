@@ -117,6 +117,11 @@ local Mason = {
   Plugins.Mason,
   build = ':MasonUpdate',
   config = true,
+  opts = {
+    ensure_installed = {
+      'hadolint',
+    },
+  },
 }
 
 ---@type LazyPluginSpec
@@ -148,6 +153,8 @@ local LspConfig = {
     -- },
     servers = {
       dartls = {},
+      dockerls = {},
+      docker_compose_language_service = {},
 
       lua_ls = {
         settings = {
