@@ -83,7 +83,7 @@ local LspSaga = {
     { 'zj', '<Cmd>Lspsaga diagnostic_jump_next<CR>' },
     { 'zk', '<Cmd>Lspsaga diagnostic_jump_prev<CR>' },
     -- Rename symbols, using <Opt-r>
-    { '®', '<Cmd>Lspsaga rename<CR>' },
+    { '®',  '<Cmd>Lspsaga rename<CR>' },
     -- { '<Space>k', '<Cmd>Lspsaga signature_help<CR>' },
     -- { '<Space>u', '<Cmd>Lspsaga show_line_diagnostics<CR>' },
     -- { '<Space>o', '<Cmd>Lspsaga diagnostic_jump_next<CR>' },
@@ -141,6 +141,18 @@ local LspConfig = {
 
   -- Copied from https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/lsp/init.lua
   opts = {
+    capabilities = {
+      textDocument = {
+        colorProvider = {
+          dynamicRegistration = true,
+        },
+        completion = {
+          completionItem = {
+            snippetSupport = true,
+          },
+        },
+      },
+    },
     -- diagnostics = {
     --   underline = true,
     --   update_in_insert = false,
@@ -155,6 +167,50 @@ local LspConfig = {
       dartls = {},
       dockerls = {},
       docker_compose_language_service = {},
+      jsonls = {
+        settings = {
+          json = {
+            schemas = {
+              {
+                fileMatch = { 'package.json' },
+                url = 'https://json.schemastore.org/package.json',
+              },
+              {
+                fileMatch = { 'tsconfig*.json' },
+                url = 'https://json.schemastore.org/tsconfig.json',
+              },
+              {
+                fileMatch = {
+                  '.prettierrc',
+                  '.prettierrc.json',
+                  'prettier.config.json',
+                },
+                url = 'https://json.schemastore.org/prettierrc.json',
+              },
+              {
+                fileMatch = { '.eslintrc', '.eslintrc.json' },
+                url = 'https://json.schemastore.org/eslintrc.json',
+              },
+              {
+                fileMatch = { '.babelrc', '.babelrc.json', 'babel.config.json' },
+                url = 'https://json.schemastore.org/babelrc.json',
+              },
+              {
+                fileMatch = { 'lerna.json' },
+                url = 'https://json.schemastore.org/lerna.json',
+              },
+              {
+                fileMatch = { 'now.json', 'vercel.json' },
+                url = 'https://json.schemastore.org/now.json',
+              },
+              {
+                fileMatch = { 'jest.config.js' },
+                url = 'https://json.schemastore.org/jest.config.json',
+              },
+            },
+          },
+        },
+      },
 
       lua_ls = {
         settings = {
@@ -245,13 +301,13 @@ local LspConfig = {
   init = function()
     vim.lsp.set_log_level 'warn'
     vim.lsp.handlers['textDocument/publishDiagnostics'] =
-      vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        underline = true,
-        virtual_text = {
-          spacing = 4,
-          prefix = '',
-        },
-      })
+        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+          underline = true,
+          virtual_text = {
+            spacing = 4,
+            prefix = '',
+          },
+        })
   end,
 
   config = function(_, opts)
@@ -316,18 +372,14 @@ local LspConfig = {
       opts.capabilities or {}
     )
 
-    capabilities.textDocument.colorProvider = {
-      dynamicRegistration = true,
-    }
-
     local function server_setup(server_name)
       local server_opts = vim.tbl_deep_extend('force', {
         on_attach = on_attach,
         capabilities = capabilities,
       }, opts.servers[server_name] or {})
       if
-        opts.setups[server_name]
-        and opts.setups[server_name](server_name, server_opts)
+          opts.setups[server_name]
+          and opts.setups[server_name](server_name, server_opts)
       then
         return
       end

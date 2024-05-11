@@ -30,7 +30,16 @@ local function detect_local_prettier()
 end
 
 local function save_with_formatting()
-  if detect_local_prettier() then
+  local should_format = true
+  if
+      vim.tbl_contains(
+        { 'javascript', 'typescript', 'typescriptreact' },
+        vim.bo.filetype
+      )
+  then
+    should_format = detect_local_prettier()
+  end
+  if should_format then
     vim.lsp.buf.format { timeout_ms = 5000 }
   end
   vim.cmd 'write'

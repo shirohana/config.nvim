@@ -76,10 +76,12 @@ M.Plugins = {
   Navic = 'SmiteshP/nvim-navic',
   -- NeoTree https://github.com/nvim-neo-tree/neo-tree.nvim
   NeoTree = 'nvim-neo-tree/neo-tree.nvim',
+  -- NoneLs https://github.com/nvimtools/none-ls.nvim
+  NoneLs = 'nvimtools/none-ls.nvim',
   -- Nui https://github.com/MunifTanjim/nui.nvim
   Nui = 'MunifTanjim/nui.nvim',
   -- NullLs https://github.com/jose-elias-alvarez/null-ls.nvim
-  NullLs = 'jose-elias-alvarez/null-ls.nvim',
+  -- NullLs = 'jose-elias-alvarez/null-ls.nvim',
   -- Oil https://github.com/stevearc/oil.nvim
   Oil = 'stevearc/oil.nvim',
   -- OpenBrowser https://github.com/tyru/open-browser.vim

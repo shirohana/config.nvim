@@ -6,6 +6,18 @@ local colors = require('themes.solarized_dark').colors
 local Plugins = require('vars').Plugins
 
 ---@type LazyPluginSpec
+local Colorizer = {
+  Plugins.Colorizer,
+  opts = {
+    user_default_options = {
+      css = true,
+      tailwind = true,
+      sass = { enable = false, parsers = { 'css' } },
+    },
+  },
+}
+
+---@type LazyPluginSpec
 local IndentBlankline = {
   Plugins.IndentBlankline,
   version = '2',
@@ -118,11 +130,11 @@ local Scrollbar = {
 --   end,
 -- }
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
+  Colorizer,
   Hlslens,
   IndentBlankline,
   Plugins.Cursorword,
   Scrollbar,
-  { Plugins.Colorizer, config = true },
 }
