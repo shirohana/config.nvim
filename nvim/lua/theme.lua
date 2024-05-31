@@ -6,6 +6,7 @@ end
 
 vim.g.neosolarized_termtrans = 1
 vim.cmd 'colorscheme NeoSolarized'
+
 -- vim.cmd 'colorscheme tokyonight'
 
 -- vim.cmd [[

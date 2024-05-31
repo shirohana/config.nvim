@@ -90,9 +90,16 @@ local NeoTree = {
           ['<C-x>'] = 'clear_filter',
           ['U'] = 'navigate_up',
           ['C'] = 'set_root',
+          ['me'] = 'open_with_edit',
           [';k'] = 'prev_git_modified',
           [';j'] = 'next_git_modified',
         },
+      },
+      commands = {
+        open_with_edit = function(state)
+          local node = state.tree:get_node()
+          vim.cmd('edit ' .. node.path)
+        end,
       },
     },
     buffers = {

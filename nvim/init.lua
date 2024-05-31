@@ -23,3 +23,5 @@ require('lazy').setup {
   { import = 'plugins.ide' },
   { import = 'plugins.lang' },
 }
+
+-- vim.cmd.colorscheme 'catppuccin-macchiato'

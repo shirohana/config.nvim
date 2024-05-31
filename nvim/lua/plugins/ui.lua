@@ -137,4 +137,5 @@ return {
   IndentBlankline,
   Plugins.Cursorword,
   Scrollbar,
+  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 }
